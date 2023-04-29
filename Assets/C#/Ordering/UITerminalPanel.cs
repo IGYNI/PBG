@@ -17,12 +17,25 @@ namespace Ordering
             _terminal = FindObjectOfType<Terminal>();
         }
 
-        private void OnEnable()
+        public void Open()
         {
-            _closeButton.onClick.AddListener(Close);
+            gameObject.SetActive(true);
+            _closeButton.onClick.AddListener(HandleCloseClick);
             _interactButton.onClick.AddListener(Interact);
-            _getOrderButton.onClick.AddListener(_terminal.CreateOrder);
+            _getOrderButton.onClick.AddListener(GetOrder);
             UpdateData();
+        }
+
+        private void GetOrder()
+        {
+            _terminal.CreateOrder();
+            UpdateData();
+        }
+
+        private void HandleCloseClick()
+        {
+            _orderPanel.SetActive(false);
+            _interactButton.gameObject.SetActive(true);
         }
 
         private void Interact()
@@ -33,30 +46,33 @@ namespace Ordering
 
         public void UpdateData()
         {
+            int i = 0;
             _getOrderButton.gameObject.SetActive(_terminal.CurrentOrder == null);
 
-            if (_terminal.CurrentOrder != null)
+            foreach (var icon in _icons)
             {
-                for (int i = 0; i < _terminal.CurrentOrder.Boxes.Count; i++)
+                if (_terminal.CurrentOrder != null && i < _terminal.CurrentOrder.Boxes.Count)
                 {
-                    _icons[i].color = _terminal.CurrentOrder.Boxes.ElementAt(i).Color;
+                    icon.color = _terminal.CurrentOrder.Boxes.ElementAt(i).Color;
+                    icon.gameObject.SetActive(true);
+                    i++;
+                    continue;
                 }
+
+                icon.gameObject.SetActive(false);
             }
         }
 
-        private void Close()
+        public void Close()
         {
             _orderPanel.SetActive(false);
             _interactButton.gameObject.SetActive(true);
-        }
-
-        private void OnDisable()
-        {
-            _closeButton.onClick.RemoveListener(Close);
+            _closeButton.onClick.RemoveListener(HandleCloseClick);
             _interactButton.onClick.RemoveListener(Interact);
-            _getOrderButton.onClick.RemoveListener(_terminal.CreateOrder);
+            _getOrderButton.onClick.RemoveListener(GetOrder);
             _orderPanel.SetActive(false);
             _interactButton.gameObject.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 }

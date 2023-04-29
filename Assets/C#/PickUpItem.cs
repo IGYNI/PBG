@@ -19,8 +19,8 @@ public class PickUpItem : MonoBehaviour
         Collider[] hit = Physics.OverlapSphere(Point.position, Range, Layers);
         foreach (Collider obj in hit)
         {
-          GameObject.SetActive(true);
-            Debug.Log("E");
+            GameObject.SetActive(true);
+
         }
 
     }
@@ -30,4 +30,5 @@ public class PickUpItem : MonoBehaviour
             return;
         Gizmos.DrawWireSphere(Point.position, Range);
     }
+
 }

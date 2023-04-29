@@ -11,7 +11,7 @@ public class PickUpItem : MonoBehaviour
     public GameObject TakeBoxBtn;
     public Box _currentBox; 
     public Transform hitbox = null;
-    public List<Box> ListOfBoxesInPlayer;
+    public List<Box> ListOfBoxesInPlayer = new();
     public Transform _lastposBox;
 
     void Update()
@@ -47,6 +47,7 @@ public class PickUpItem : MonoBehaviour
         TakeBoxBtn.SetActive(true);
         _currentBox.GetComponent<RotateObject>().enabled = true;
     } 
+
     public void TakeBox()
     {
         if(ListOfBoxesInPlayer.Count < Terminal.Instance.OrderBoxesCount)   
@@ -79,7 +80,7 @@ public class PickUpItem : MonoBehaviour
         }
     }
 
-    public void OutBox()
+    public void DropBox()
     {
         _currentBox.transform.SetParent(null);
         TakeBoxBtn.SetActive(false);
@@ -95,6 +96,4 @@ public class PickUpItem : MonoBehaviour
             }
         
     }
-
-
 }

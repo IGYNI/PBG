@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Stesh : MonoBehaviour
 {
     public int Slot;
-    public GameObject Ladder;
-
+    private Ladder _ladder;
     private bool loanin;
+
+    [field: SerializeField] public GameObject LadderView { get; private set; }
     
     private void Start()
     {
+        _ladder = FindObjectOfType<Ladder>();
+
         loanin = true;
-        if (Ladder.activeSelf == true)
+        if (_ladder.gameObject.activeSelf == true)
         {
-         Slot = 1;
+            Slot = 1;
         }
        
         
@@ -22,12 +23,10 @@ public class Stesh : MonoBehaviour
 
     private void Update()
     {
-        if (Ladder.activeSelf == false&&loanin==true)
+        if (_ladder.gameObject.activeSelf == false && loanin == true)
         {
             Slot = 0;
             loanin = false; 
         }
     }
-
-
 }

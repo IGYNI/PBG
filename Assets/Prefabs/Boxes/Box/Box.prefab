@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8789419867432357815}
   - component: {fileID: 8789419867432357814}
   - component: {fileID: 8789419867432357809}
-  - component: {fileID: 8789419867432357808}
+  - component: {fileID: 308072741850098941}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -86,7 +86,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8789419867432357808
+--- !u!114 &308072741850098941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,13 +95,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8789419867432357811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ad231b60b040649b3284f1ecda9dd9, type: 3}
+  m_Script: {fileID: 11500000, guid: d0778c1503ae7a946a129935dce049f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoxColor: {r: 0, g: 0, b: 0, a: 0}
-  ColorList: []
-  StickerList: []
-  CanvasSides: []
 --- !u!1 &8789419867900694874
 GameObject:
   m_ObjectHideFlags: 0

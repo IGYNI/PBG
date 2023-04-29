@@ -4,6 +4,8 @@
     {
         Won,
         Lost,
+        OrderCreated,
+        OrderCompleted,
         SoundEnabled,
         SoundDisabled
     }

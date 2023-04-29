@@ -24,6 +24,7 @@ public class Muv : MonoBehaviour
         _camera = Camera.main;
     }
 
+
     void Update()
     {
         PlayerRun();

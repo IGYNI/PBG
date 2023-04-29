@@ -13,7 +13,7 @@ public class PickUpItem : MonoBehaviour
     public Transform PositionWithPlayer;
     public GameObject GameObject;
     public GameObject TakeBoxBtn;
-    public Transform _currentBox; 
+    public Box _currentBox; 
 
     public List<GameObject> ListOfBoxesInPlayer;
 
@@ -26,17 +26,20 @@ public class PickUpItem : MonoBehaviour
             {
                 if (Point == null)
                     return;
-                if (hitInfo.transform.GetComponent<BoxInfo>())
-                    _currentBox = hitInfo.transform;
+
+                if (hitInfo.transform.TryGetComponent(out Box box))
+                {
+                    _currentBox = box;
                     TpToCameraObjetc(hitInfo.transform);
+                }
             }
         }
     }
 
     public void TpToCameraObjetc(Transform obj)
     {
-        _currentBox.SetParent(Camera.main.transform);
-        _currentBox.position = PositionWithCamera.position;
+        _currentBox.transform.SetParent(Camera.main.transform);
+        _currentBox.transform.position = PositionWithCamera.position;
         TakeBoxBtn.SetActive(true);
         _currentBox.GetComponent<RotateObject>().enabled = true;
     } 
@@ -45,11 +48,11 @@ public class PickUpItem : MonoBehaviour
         if(ListOfBoxesInPlayer.Count < 3)   
         {
             TakeBoxBtn.SetActive(false);
-            _currentBox.SetParent(GetComponent<Transform>());
+            _currentBox.transform.SetParent(GetComponent<Transform>());
             UnityEngine.Vector3 PlayerRotationn = new UnityEngine.Vector3(GetComponent<Transform>().rotation.x, GetComponent<Transform>().rotation.y, GetComponent<Transform>().rotation.z) + new UnityEngine.Vector3(-90, 90, 0);
-            _currentBox.position = PositionWithPlayer.position;
+            _currentBox.transform.position = PositionWithPlayer.position;
              UnityEngine.Debug.Log("hui");
-            _currentBox.rotation =  PositionWithPlayer.rotation; //UnityEngine.Quaternion.Euler(PlayerRotationn.x, PlayerRotationn.y, PlayerRotationn.z);
+            _currentBox.transform.rotation =  PositionWithPlayer.rotation; //UnityEngine.Quaternion.Euler(PlayerRotationn.x, PlayerRotationn.y, PlayerRotationn.z);
 
            
         }

@@ -40,7 +40,11 @@ namespace General
         {
             _elements
                 .Where(element => element.gameObject.activeSelf == true).ToList()
-                .ForEach(element => element.gameObject.SetActive(false));
+                .ForEach(element => 
+                {
+                    element.gameObject.SetActive(false);
+                    element.transform.SetParent(_container);
+                });
         }
 
         private bool HasAvailable(out T availableElement)

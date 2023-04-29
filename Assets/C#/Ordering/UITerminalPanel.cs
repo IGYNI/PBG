@@ -20,7 +20,7 @@ namespace Ordering
         public void Open()
         {
             gameObject.SetActive(true);
-            _closeButton.onClick.AddListener(Close);
+            _closeButton.onClick.AddListener(HandleCloseClick);
             _interactButton.onClick.AddListener(Interact);
             _getOrderButton.onClick.AddListener(GetOrder);
             UpdateData();
@@ -30,6 +30,12 @@ namespace Ordering
         {
             _terminal.CreateOrder();
             UpdateData();
+        }
+
+        private void HandleCloseClick()
+        {
+            _orderPanel.SetActive(false);
+            _interactButton.gameObject.SetActive(true);
         }
 
         private void Interact()
@@ -43,20 +49,17 @@ namespace Ordering
             int i = 0;
             _getOrderButton.gameObject.SetActive(_terminal.CurrentOrder == null);
 
-            if (_terminal.CurrentOrder != null)
+            foreach (var icon in _icons)
             {
-                foreach (var icon in _icons)
+                if (_terminal.CurrentOrder != null && i < _terminal.CurrentOrder.Boxes.Count)
                 {
-                    if (i < _terminal.CurrentOrder.Boxes.Count)
-                    {
-                        icon.color = _terminal.CurrentOrder.Boxes.ElementAt(i).Color;
-                        icon.gameObject.SetActive(true);
-                        i++;
-                        continue;
-                    }
-
-                    icon.gameObject.SetActive(false);
+                    icon.color = _terminal.CurrentOrder.Boxes.ElementAt(i).Color;
+                    icon.gameObject.SetActive(true);
+                    i++;
+                    continue;
                 }
+
+                icon.gameObject.SetActive(false);
             }
         }
 
@@ -64,7 +67,7 @@ namespace Ordering
         {
             _orderPanel.SetActive(false);
             _interactButton.gameObject.SetActive(true);
-            _closeButton.onClick.RemoveListener(Close);
+            _closeButton.onClick.RemoveListener(HandleCloseClick);
             _interactButton.onClick.RemoveListener(Interact);
             _getOrderButton.onClick.RemoveListener(GetOrder);
             _orderPanel.SetActive(false);

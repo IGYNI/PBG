@@ -1,28 +1,22 @@
-﻿using NaughtyAttributes;
-using UnityEditor;
+﻿using General;
+using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ordering
 {
-    [RequireComponent(typeof(BoxCollider))]
-    public class Terminal : MonoBehaviour
+    public class Terminal : SceneSingletone<Terminal>
     {
         [SerializeField] private BoxInfo[] _allBoxes;
         [SerializeField] private Vector3 _triggerOffset, _triggerSize;
         [SerializeField] private LayerMask _playerLayerMask;
         [SerializeField] private UITerminalPanel _uiPanel;
-        private BoxCollider _collider;
         public bool _isInteract;
 
         public bool IsBroken { get; private set; }
 
-        [field: SerializeField] public int OrderBoxesCount { get; set; } = 3;
+        [field: SerializeField, Range(1, 10)] public int OrderBoxesCount { get; set; } = 3;
         public Order CurrentOrder { get; private set; }
-
-        private void Awake()
-        {
-            _collider = GetComponent<BoxCollider>();
-        }
 
         public void CreateOrder()
         {
@@ -34,6 +28,28 @@ namespace Ordering
             }
 
             CurrentOrder = new(randomBoxes);
+            GameEvents.Instance.Dispatch(GameEventType.OrderCreated);
+        }
+
+        [Button("Complete")]
+        public void Complete()
+        {
+            if (Application.isPlaying == false)
+                return;
+
+            Complete(CurrentOrder.Boxes);
+        }
+
+        public void Complete(IReadOnlyCollection<BoxInfo> boxes)
+        {
+            if (boxes.Equals(CurrentOrder.Boxes))
+            {
+                Debug.Log("Complete");
+                OrderBoxesCount++;
+                CurrentOrder = null;
+                _uiPanel.UpdateData();
+                GameEvents.Instance.Dispatch(GameEventType.OrderCompleted);
+            }
         }
 
         [Button("Broke")]

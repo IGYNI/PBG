@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace General
 {
-    public class GameEvents : IEventBus, IDisposable
+    public class GameEvents : ProjectSingleton<GameEvents>, IEventBus, IDisposable
     {
         private readonly Dictionary<GameEventType, UnityEvent> _events = new();
 

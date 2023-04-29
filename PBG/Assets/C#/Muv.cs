@@ -13,7 +13,7 @@ public class Muv : MonoBehaviour
 
     private float _turntime = 0.1f;
     private float turn;
-    public float gravity = -1;
+    private float gravity = -1;
     private Vector3 velocity;
     private bool isGraund;
     private float groundDistanse = 0.4f;

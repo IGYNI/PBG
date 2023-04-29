@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class BoxInfo : MonoBehaviour
+[CreateAssetMenu(menuName = "Box Info", fileName = "New Box")]
+public class BoxInfo : ScriptableObject
 {
-    public Color BoxMaterial;
+    public Color Color;
 }

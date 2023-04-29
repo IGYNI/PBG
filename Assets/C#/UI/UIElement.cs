@@ -1,41 +1,26 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI
 {
-    public abstract class UIElement : UIBehaviour
+    public abstract class UIElement : MonoBehaviour
     {
-        [SerializeField] protected Button _closeButton;
+        [SerializeField] private Button _closeButton;
 
-        protected UIMediator _mediator;
-
-        protected override void Awake()
+        protected virtual void OnEnable()
         {
-            base.Awake();
-            _mediator = GetComponentInParent<UIMediator>();
+            if (_closeButton)
+                _closeButton.onClick.AddListener(Close);
         }
 
-        protected override void OnEnable()
+        public abstract void Open();
+
+        public abstract void Close();
+
+        protected virtual void OnDisable()
         {
-            base.OnEnable();
-
             if (_closeButton)
-                _closeButton.onClick.AddListener(HandleClose);
-        }
-
-        public abstract void Hide();
-
-        private void HandleClose() => _mediator.HidePopup();
-
-        public abstract void Show();
-
-        protected override void OnDisable()
-        {
-            base.OnDisable();
-
-            if (_closeButton)
-                _closeButton.onClick.RemoveListener(HandleClose);
+                _closeButton.onClick.RemoveListener(Close);
         }
     }
 }

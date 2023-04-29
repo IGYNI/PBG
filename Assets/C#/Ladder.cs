@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ladder : MonoBehaviour
 {
-    public GameObject hand;
+    private GameObject hand;
     public GameObject newParent;
-    public Stesh Stesh;
+    private Stesh Stesh;
    
 
     private bool isRange;
@@ -16,7 +14,10 @@ public class Ladder : MonoBehaviour
     private void Start()
     {
         isPickUp = false;
+        Stesh = FindObjectOfType<Stesh>();
+        hand = Stesh.LadderView.gameObject;
     }
+
     private void Update()
     {
         if (isRange==true && Stesh.Slot != 1  && Input.GetKeyDown(KeyCode.E) && thisladder == 1 || isRange == true &&Input.GetKeyDown(KeyCode.E) && thisladder == 2)

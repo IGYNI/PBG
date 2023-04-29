@@ -31,7 +31,7 @@ public class PickUpItem : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 UnityEngine.Debug.Log("2");
-                UnityEngine.Debug.Log(hitInfo.transform.name);
+                UnityEngine.Debug.Log(hitInfo.transform.TryGetComponent(out Box boxx) );
                 if (hitInfo.transform.TryGetComponent(out Box box))
                 {
                     UnityEngine.Debug.Log("3");
@@ -92,6 +92,7 @@ public class PickUpItem : MonoBehaviour
     public void OutBox()
     {
         _currentBox.transform.SetParent(null);
+        TakeBoxBtn.SetActive(false);
         _currentBox.transform.position = GetComponent<Transform>().position + new UnityEngine.Vector3(1, 1, 1);
         _currentBox.transform.rotation = PositionWithPlayer.rotation;
         foreach (var box in ListOfBoxesInPlayer)

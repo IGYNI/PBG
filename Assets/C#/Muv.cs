@@ -17,6 +17,12 @@ public class Muv : MonoBehaviour
     private Vector3 velocity;
     private bool isGraund;
     private float groundDistanse = 0.4f;
+    private Camera _camera;
+
+    private void Start()
+    {
+        _camera = Camera.main;
+    }
 
 
     void Update()
@@ -32,9 +38,9 @@ public class Muv : MonoBehaviour
             velocity.y = -2f;
         }
 
-        float _horizontal = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
-        float _vertical = Input.GetAxisRaw("Vertical") * Time.deltaTime;
-        Vector3 _direction = new Vector3(_vertical, 0f, -_horizontal).normalized;
+        float horizontal = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
+        float vertical = Input.GetAxisRaw("Vertical") * Time.deltaTime;
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
         velocity.y += gravity * Time.deltaTime;
         _controller.Move(velocity * Time.deltaTime);
         if (_groundChek.position.y < -1f)
@@ -42,12 +48,13 @@ public class Muv : MonoBehaviour
            // FindObjectOfType<GameOver>().EndGame();
         }
 
-        if (_direction.magnitude >= .1f)
+        if (direction.magnitude >= .1f)
         {
-            float targetAgle = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg;
+            float targetAgle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _camera.transform.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAgle, ref turn, _turntime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            _controller.Move(_direction * _speed * Time.deltaTime);
+            Vector3 moveDirecton = Quaternion.Euler(0f, targetAgle, 0f) * Vector3.forward;
+            _controller.Move(_speed * Time.deltaTime * moveDirecton.normalized);
 
 
            // animator.SetBool("go", true);

@@ -23,7 +23,6 @@ public class PickUpItem : MonoBehaviour
         Ray mRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mRay, out RaycastHit hitInfo))
         {
-            UnityEngine.Debug.Log("1");
             //if (hitbox.GetComponent<Box>())
             //        hitbox.GetComponent<Outline>().OutlineWidth = 2;
             //if (!hitInfo.transform.GetComponent<Box>())
@@ -31,6 +30,7 @@ public class PickUpItem : MonoBehaviour
             //hitbox = hitInfo.transform;
             if(Input.GetMouseButtonDown(0))
             {
+                UnityEngine.Debug.Log("2");
                 UnityEngine.Debug.Log(hitInfo.transform.name);
                 if (hitInfo.transform.TryGetComponent(out Box box))
                 {

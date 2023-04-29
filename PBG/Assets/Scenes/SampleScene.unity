@@ -764,11 +764,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.1
+  far clip plane: 5000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -791,15 +791,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.20448667, y: 0.67689383, z: -0.20448671, w: 0.67689383}
-  m_LocalPosition: {x: -13.07, y: 10.52, z: -1.01}
+  m_LocalRotation: {x: 0.22538413, y: 0.6786857, z: -0.2319863, w: 0.65937096}
+  m_LocalPosition: {x: -12.73, y: 9.49, z: 0.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 706019437}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 33.619, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 37.743, y: 91.654, z: 0}
 --- !u!1 &1361464870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,7 +1066,7 @@ RectTransform:
   m_GameObject: {fileID: 1639912304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 743669064}
@@ -1106,7 +1106,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.3
 --- !u!222 &1639912307
 CanvasRenderer:
   m_ObjectHideFlags: 0

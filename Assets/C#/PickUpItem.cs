@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Numerics;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,11 +44,14 @@ public class PickUpItem : MonoBehaviour
     {
         if(ListOfBoxesInPlayer.Count < 3)   
         {
-            _currentBox.GetComponent<RotateObject>().enabled = false;
+            TakeBoxBtn.SetActive(false);
             _currentBox.SetParent(GetComponent<Transform>());
             UnityEngine.Vector3 PlayerRotationn = new UnityEngine.Vector3(GetComponent<Transform>().rotation.x, GetComponent<Transform>().rotation.y, GetComponent<Transform>().rotation.z) + new UnityEngine.Vector3(-90, 90, 0);
-            _currentBox.rotation = PositionWithPlayer.rotation;
             _currentBox.position = PositionWithPlayer.position;
+             UnityEngine.Debug.Log("hui");
+            _currentBox.rotation =  PositionWithPlayer.rotation; //UnityEngine.Quaternion.Euler(PlayerRotationn.x, PlayerRotationn.y, PlayerRotationn.z);
+
+           
         }
     }
 }

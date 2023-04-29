@@ -17,11 +17,18 @@ namespace Ordering
             _terminal = FindObjectOfType<Terminal>();
         }
 
-        private void OnEnable()
+        public void Open()
         {
+            gameObject.SetActive(true);
             _closeButton.onClick.AddListener(Close);
             _interactButton.onClick.AddListener(Interact);
-            _getOrderButton.onClick.AddListener(_terminal.CreateOrder);
+            _getOrderButton.onClick.AddListener(GetOrder);
+            UpdateData();
+        }
+
+        private void GetOrder()
+        {
+            _terminal.CreateOrder();
             UpdateData();
         }
 
@@ -33,30 +40,36 @@ namespace Ordering
 
         public void UpdateData()
         {
+            int i = 0;
             _getOrderButton.gameObject.SetActive(_terminal.CurrentOrder == null);
 
             if (_terminal.CurrentOrder != null)
             {
-                for (int i = 0; i < _terminal.CurrentOrder.Boxes.Count; i++)
+                foreach (var icon in _icons)
                 {
-                    _icons[i].color = _terminal.CurrentOrder.Boxes.ElementAt(i).Color;
+                    if (i < _terminal.CurrentOrder.Boxes.Count)
+                    {
+                        icon.color = _terminal.CurrentOrder.Boxes.ElementAt(i).Color;
+                        icon.gameObject.SetActive(true);
+                        i++;
+                        continue;
+                    }
+
+                    icon.gameObject.SetActive(false);
                 }
             }
         }
 
-        private void Close()
+        public void Close()
         {
             _orderPanel.SetActive(false);
             _interactButton.gameObject.SetActive(true);
-        }
-
-        private void OnDisable()
-        {
             _closeButton.onClick.RemoveListener(Close);
             _interactButton.onClick.RemoveListener(Interact);
-            _getOrderButton.onClick.RemoveListener(_terminal.CreateOrder);
+            _getOrderButton.onClick.RemoveListener(GetOrder);
             _orderPanel.SetActive(false);
             _interactButton.gameObject.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 }

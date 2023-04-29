@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ad231b60b040649b3284f1ecda9dd9, type: 3}
   m_Name: Green Box
   m_EditorClassIdentifier: 
-  Color: {r: 0.074186325, g: 1, b: 0, a: 0}
+  Color: {r: 0.003680706, g: 1, b: 0, a: 1}

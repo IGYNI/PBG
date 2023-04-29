@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using NaughtyAttributes;
+using UnityEditor;
+using UnityEngine;
 
 namespace Ordering
 {
@@ -11,6 +13,8 @@ namespace Ordering
         [SerializeField] private UITerminalPanel _uiPanel;
         private BoxCollider _collider;
         public bool _isInteract;
+
+        public bool IsBroken { get; private set; }
 
         [field: SerializeField] public int OrderBoxesCount { get; set; } = 3;
         public Order CurrentOrder { get; private set; }
@@ -32,6 +36,36 @@ namespace Ordering
             CurrentOrder = new(randomBoxes);
         }
 
+        [Button("Broke")]
+        public void Broke()
+        {
+            if (Application.isPlaying == false)
+                return;
+
+            if (IsBroken)
+                return;
+
+            IsBroken = true;
+
+            if (_isInteract)
+                _uiPanel.Close();
+        }
+
+        [Button("Fix")]
+        public void Fix()
+        {
+            if (Application.isPlaying == false)
+                return;
+
+            if (IsBroken == false)
+                return;
+
+            IsBroken = false;
+
+            if (_isInteract)
+                _uiPanel.Open();
+        }
+
         private void FixedUpdate()
         {
             if (Physics.CheckBox(transform.position + _triggerOffset, _triggerSize, transform.rotation, _playerLayerMask))
@@ -39,14 +73,15 @@ namespace Ordering
                 if (_isInteract == false)
                 {
                     _isInteract = true;
-                    _uiPanel.gameObject.SetActive(true);
-                    
+
+                    if (IsBroken == false)
+                        _uiPanel.Open();
                 }
             }
             else if (_isInteract)
             {
                 _isInteract = false;
-                _uiPanel.gameObject.SetActive(false);
+                _uiPanel.Close();
             }
         }
 

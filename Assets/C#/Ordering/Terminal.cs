@@ -44,7 +44,6 @@ namespace Ordering
         {
             if (boxes.Equals(CurrentOrder.Boxes))
             {
-                Debug.Log("Complete");
                 OrderBoxesCount++;
                 CurrentOrder = null;
                 _uiPanel.UpdateData();

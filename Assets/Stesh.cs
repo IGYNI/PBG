@@ -3,17 +3,17 @@ using UnityEngine;
 public class Stesh : MonoBehaviour
 {
     public int Slot;
-    private Ladder _ladder;
+    public GameObject _ladder;
     private bool loanin;
 
     [field: SerializeField] public GameObject LadderView { get; private set; }
     
     private void Start()
     {
-        _ladder = FindObjectOfType<Ladder>();
+        
 
         loanin = true;
-        if (_ladder.gameObject.activeSelf == true)
+        if (_ladder.activeSelf == true)
         {
             Slot = 1;
         }
@@ -23,7 +23,7 @@ public class Stesh : MonoBehaviour
 
     private void Update()
     {
-        if (_ladder.gameObject.activeSelf == false && loanin == true)
+        if (_ladder.activeSelf == false && loanin == true)
         {
             Slot = 0;
             loanin = false; 

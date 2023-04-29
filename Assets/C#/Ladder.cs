@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Ladder : MonoBehaviour
 {
-    private GameObject hand;
+    public GameObject hand;
     public GameObject newParent;
     private Stesh Stesh;
    
@@ -15,7 +15,6 @@ public class Ladder : MonoBehaviour
     {
         isPickUp = false;
         Stesh = FindObjectOfType<Stesh>();
-        hand = Stesh.LadderView.gameObject;
     }
 
     private void Update()

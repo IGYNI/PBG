@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
     public float Range;
     [SerializeField] Transform Point;
-    [SerializeField] LayerMask enemyLayers;
+    [SerializeField] LayerMask Layers;
     public GameObject GameObject;
 
     void Update()
@@ -19,7 +16,7 @@ public class PickUpItem : MonoBehaviour
     }
     private void PickUpItems()
     {
-        Collider[] hit = Physics.OverlapSphere(Point.position, Range, enemyLayers);
+        Collider[] hit = Physics.OverlapSphere(Point.position, Range, Layers);
         foreach (Collider obj in hit)
         {
           GameObject.SetActive(true);

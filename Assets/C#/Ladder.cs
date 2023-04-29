@@ -6,9 +6,12 @@ public class Ladder : MonoBehaviour
 {
     public GameObject hand;
     public GameObject newParent;
+    public Stesh Stesh;
+   
 
     private bool isRange;
     private bool isPickUp;
+    private int thisladder = 1;
 
     private void Start()
     {
@@ -16,12 +19,24 @@ public class Ladder : MonoBehaviour
     }
     private void Update()
     {
-        if (isRange==true && Input.GetKeyDown(KeyCode.E))
+        if (isRange==true && Stesh.Slot != 1  && Input.GetKeyDown(KeyCode.E) && thisladder == 1 || isRange == true &&Input.GetKeyDown(KeyCode.E) && thisladder == 2)
         { 
             isPickUp = !isPickUp;
-
+  
             newParent.SetActive(isPickUp);
             hand.SetActive(!isPickUp);
+            if (hand.activeSelf == false)
+            {
+                Stesh.Slot = 1;
+                thisladder = 2;
+                Debug.Log("Work");
+            }
+            else
+            {
+                Stesh.Slot = 0;
+                thisladder = 1;
+            }
+            
         }
     }
     private void OnTriggerEnter(Collider other)

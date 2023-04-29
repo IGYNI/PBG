@@ -8,6 +8,7 @@ public class PickUp1 : MonoBehaviour
     [SerializeField] LayerMask Item;
     [SerializeField] Transform hand;
     public GameObject GameObject;
+    public GameObject Loadd;
     private bool inhand;
     void Update()
     {
@@ -28,7 +29,8 @@ public class PickUp1 : MonoBehaviour
         foreach (Collider obj in hits)
         {
     
-           obj.gameObject.SetActive(true);
+           obj.gameObject.SetActive(false);
+            Loadd.gameObject.SetActive(true);
         }
 
     }

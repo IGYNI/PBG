@@ -8,17 +8,20 @@ public class Ladder : MonoBehaviour
     public GameObject newParent;
 
     private bool isRange;
+    private bool isPickUp;
 
+    private void Start()
+    {
+        isPickUp = false;
+    }
     private void Update()
     {
-        if (isRange==true && hand.transform.childCount == 1 && Input.GetKeyDown(KeyCode.E))
-        {
-            foreach (Transform child in hand.transform)
-            {
-                child.SetParent(newParent.transform);
-                child.gameObject.transform.localPosition = Vector3.zero;
-                child.gameObject.transform.localRotation = Quaternion.identity;
-            }
+        if (isRange==true && Input.GetKeyDown(KeyCode.E))
+        { 
+            isPickUp = !isPickUp;
+
+            newParent.SetActive(isPickUp);
+            hand.SetActive(!isPickUp);
         }
     }
     private void OnTriggerEnter(Collider other)

@@ -28,9 +28,7 @@ public class PickUp1 : MonoBehaviour
         foreach (Collider obj in hits)
         {
     
-           obj.gameObject.transform.SetParent(hand, true);
-            obj.gameObject.transform.localPosition = Vector3.zero;
-            obj.gameObject.transform.localRotation = Quaternion.identity;
+           obj.gameObject.SetActive(true);
         }
 
     }

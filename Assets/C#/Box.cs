@@ -3,7 +3,8 @@
 public class Box : MonoBehaviour
 {
     private MeshRenderer _meshRenderer;
-    private int i;
+
+    public bool IsDefault { get; private set; }
     private void Awake()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
@@ -12,11 +13,12 @@ public class Box : MonoBehaviour
     public void SetInfo(BoxInfo info)
     {
         _meshRenderer.material.color = info.Color;
+        IsDefault = false;
     }
 
-    void Update()
+    public void ResetByDefault()
     {
-        i++;
-        i--;
+        IsDefault = true;
+        _meshRenderer.material.color = Color.white;
     }
 }

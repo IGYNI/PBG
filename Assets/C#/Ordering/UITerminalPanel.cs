@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ namespace Ordering
     public class UITerminalPanel : MonoBehaviour
     {
         [SerializeField] private GameObject _orderPanel;
-        [SerializeField] private Button _closeButton, _interactButton, _getOrderButton;
+        [SerializeField] private Button _closeButton, _interactButton, _getOrderButton, _fixButton;
         [SerializeField] private Image[] _icons;
         private Terminal _terminal;
 
@@ -35,6 +36,7 @@ namespace Ordering
         {
             _orderPanel.SetActive(false);
             _interactButton.gameObject.SetActive(true);
+            UnityEngine.Debug.Log("1");
         }
 
         private void Interact()
@@ -42,6 +44,7 @@ namespace Ordering
             _interactButton.gameObject.SetActive(false);
             _orderPanel.SetActive(true);
         }
+
 
         public void UpdateData()
         {
@@ -66,12 +69,15 @@ namespace Ordering
         {
             _orderPanel.SetActive(false);
             _interactButton.gameObject.SetActive(true);
+            UnityEngine.Debug.Log("2");
             _closeButton.onClick.RemoveListener(HandleCloseClick);
             _interactButton.onClick.RemoveListener(Interact);
             _getOrderButton.onClick.RemoveListener(GetOrder);
             _orderPanel.SetActive(false);
             _interactButton.gameObject.SetActive(true);
+            UnityEngine.Debug.Log("3");
             gameObject.SetActive(false);
+            _fixButton.SetActive(false);
         }
     }
 }

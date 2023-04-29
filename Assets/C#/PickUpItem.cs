@@ -1,6 +1,4 @@
-using System.Net;
-using System.Diagnostics;
-using System.Numerics;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,12 +8,15 @@ public class PickUpItem : MonoBehaviour
     [SerializeField] Transform Point;
     public Transform PositionWithCamera;
     public Transform PositionWithPlayer;
+    public Transform PositionWithHand;
     public GameObject GameObject;
     public GameObject TakeBoxBtn;
-    public Box _currentBox; 
-    public Transform hitbox = null;
-    public List<Box> ListOfBoxesInPlayer;
-    public Transform _lastposBox;
+    private Box _currentBox; 
+    private Transform hitbox = null;
+    private List<Box> ListOfBoxesInPlayer;
+    private Transform _lastposBox;
+    public int RangeOfGetting;
+    public Tool SampleOfWrench;
 
     void Update()
     {
@@ -30,22 +31,44 @@ public class PickUpItem : MonoBehaviour
             //hitbox = hitInfo.transform;
             if(Input.GetMouseButtonDown(0))
             {
-                UnityEngine.Debug.Log("2");
-                UnityEngine.Debug.Log(hitInfo.transform.TryGetComponent(out Box boxx) );
+                Debug.Log(hitInfo.transform.name);
                 if (hitInfo.transform.TryGetComponent(out Box box))
                 {
-                    UnityEngine.Debug.Log("3");
-                    if (UnityEngine.Vector3.Distance(hitInfo.transform.position, GetComponent<Transform>().position) < 5)
+                    if (UnityEngine.Vector3.Distance(hitInfo.transform.position, GetComponent<Transform>().position) < RangeOfGetting)
                     {
-                        UnityEngine.Debug.Log("4");
                         _currentBox = box;
                         TpToCameraObjetc(hitInfo.transform);
                     }
+                } 
+
+                if (hitInfo.transform.TryGetComponent(out Tool tool))
+                {
+                    if (UnityEngine.Vector3.Distance(hitInfo.transform.position, GetComponent<Transform>().position) < RangeOfGetting)
+                    {
+                        GetComponent<Inventory>().InHands = tool;
+                        hitInfo.transform.SetParent(GetComponent<Transform>());
+                        hitInfo.transform.position = PositionWithHand.position;
+                        hitInfo.transform.rotation = PositionWithHand.rotation;
+                    }
+                }
+                if (hitInfo.transform.TryGetComponent(out Terminal term))
+                {
+                    if (UnityEngine.Vector3.Distance(hitInfo.transform.position, GetComponent<Transform>().position) < RangeOfGetting)
+                    {
+                        if (GetComponent<Inventory>().InHands == SampleOfWrench)
+                        {
+                            return;
+                        }
+                    }
                 }
             }
+            
         }
     }
-
+    public void InHand()
+    {
+        return;
+    }
     public void TpToCameraObjetc(Transform obj)
     {
         UnityEngine.Debug.Log("5");

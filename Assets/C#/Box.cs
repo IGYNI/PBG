@@ -13,10 +13,4 @@ public class Box : MonoBehaviour
     {
         _meshRenderer.material.color = info.Color;
     }
-
-    void Update()
-    {
-        i++;
-        i--;
-    }
 }

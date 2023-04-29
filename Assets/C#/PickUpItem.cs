@@ -1,3 +1,5 @@
+using System.Net;
+using System.Diagnostics;
 using System.Numerics;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +7,7 @@ using UnityEngine.UI;
 
 public class PickUpItem : MonoBehaviour
 {
-    public float Range;
     [SerializeField] Transform Point;
-    [SerializeField] LayerMask Layers;
     public Transform PositionWithCamera;
     public Transform PositionWithPlayer;
     public GameObject GameObject;
@@ -23,6 +23,7 @@ public class PickUpItem : MonoBehaviour
         Ray mRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mRay, out RaycastHit hitInfo))
         {
+            UnityEngine.Debug.Log("1");
             //if (hitbox.GetComponent<Box>())
             //        hitbox.GetComponent<Outline>().OutlineWidth = 2;
             //if (!hitInfo.transform.GetComponent<Box>())
@@ -30,15 +31,15 @@ public class PickUpItem : MonoBehaviour
             //hitbox = hitInfo.transform;
             if(Input.GetMouseButtonDown(0))
             {
-                
-                if (Point == null)
-                    return;
+                UnityEngine.Debug.Log(hitInfo.transform.name);
                 if (hitInfo.transform.TryGetComponent(out Box box))
                 {
+                    UnityEngine.Debug.Log("3");
                     if (UnityEngine.Vector3.Distance(hitInfo.transform.position, GetComponent<Transform>().position) < 5)
                     {
-                    _currentBox = box;
-                    TpToCameraObjetc(hitInfo.transform);
+                        UnityEngine.Debug.Log("4");
+                        _currentBox = box;
+                        TpToCameraObjetc(hitInfo.transform);
                     }
                 }
             }
@@ -47,6 +48,7 @@ public class PickUpItem : MonoBehaviour
 
     public void TpToCameraObjetc(Transform obj)
     {
+        UnityEngine.Debug.Log("5");
         _lastposBox = _currentBox.transform;
         _currentBox.transform.SetParent(Camera.main.transform);
         _currentBox.transform.position = PositionWithCamera.position;
@@ -55,9 +57,10 @@ public class PickUpItem : MonoBehaviour
     } 
     public void TakeBox()
     {
-        
+        UnityEngine.Debug.Log("6");
         if(ListOfBoxesInPlayer.Count < 3)   
         {
+            UnityEngine.Debug.Log("7");
             TakeBoxBtn.SetActive(false);
             _currentBox.transform.SetParent(GetComponent<Transform>());
             UnityEngine.Vector3 PlayerRotationn = new UnityEngine.Vector3(GetComponent<Transform>().rotation.x, GetComponent<Transform>().rotation.y, GetComponent<Transform>().rotation.z) + new UnityEngine.Vector3(-90, 90, 0);

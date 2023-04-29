@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ad231b60b040649b3284f1ecda9dd9, type: 3}
   m_Name: Yello Box
   m_EditorClassIdentifier: 
-  Color: {r: 0.9926069, g: 1, b: 0, a: 1}
+  <Color>k__BackingField: {r: 0.9559822, g: 1, b: 0, a: 1}

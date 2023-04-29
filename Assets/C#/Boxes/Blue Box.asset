@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ad231b60b040649b3284f1ecda9dd9, type: 3}
   m_Name: Blue Box
   m_EditorClassIdentifier: 
-  Color: {r: 0, g: 0.39888763, b: 1, a: 1}
+  <Color>k__BackingField: {r: 0, g: 0.12997723, b: 1, a: 1}

@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 0}
   newParent: {fileID: 3532574294945754486}
-  BoxCollider: {fileID: 0}
+  BoxCollider: {fileID: 5751709462174380091}
   PointUp: {fileID: 8367889851341650021}
 --- !u!1 &311971681822896623
 GameObject:

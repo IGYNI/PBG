@@ -15,10 +15,13 @@ public class Box : MonoBehaviour
         _meshRenderer.material.color = info.Color;
         IsDefault = false;
     }
+<<<<<<< HEAD
+=======
 
     public void ResetByDefault()
     {
         IsDefault = true;
         _meshRenderer.material.color = Color.white;
     }
+>>>>>>> c1adc14c91c5bef2f298b12c52325220d0deddd4
 }

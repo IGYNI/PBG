@@ -5,5 +5,5 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public List<Box> ListOfBoxesInPlayerIN;
-    public GameObject InHands;
+    public Tool InHands;
 }

@@ -55,9 +55,11 @@ public class PickUpItem : MonoBehaviour
                         if (UnityEngine.Vector3.Distance(hitInfo.transform.position, GetComponent<Transform>().position) < RangeOfGetting)
                         {
                             GetComponent<Inventory>().InHands = tool;
+                            GetComponent<Inventory>().IsInHandWrecnh = true;
                             hitInfo.transform.SetParent(GetComponent<Transform>());
                             hitInfo.transform.position = PositionWithHand.position;
                             hitInfo.transform.rotation = PositionWithHand.rotation;
+
                         }
                     }
                     if (hitInfo.transform.TryGetComponent(out Terminal term))

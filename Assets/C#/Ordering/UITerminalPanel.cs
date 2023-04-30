@@ -53,6 +53,7 @@ namespace Ordering
             _interactButton.gameObject.SetActive(_terminal.IsBroken == false && _orderPanel.activeSelf == false);
             _fixButton.gameObject.SetActive(_terminal.IsBroken);
             _fixButton.interactable = (_terminal.Player.InHands == _terminal.Sample_of_wrench);
+            
 
             if(_orderPanel.activeSelf && _terminal.IsBroken)
             {

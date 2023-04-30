@@ -2,8 +2,10 @@ using System.Numerics;
 using System.Diagnostics;
 using General;
 using Ordering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
@@ -79,7 +81,6 @@ public class PickUpItem : MonoBehaviour
                                 hitInfo.transform.SetParent(GetComponent<Transform>());
                             }
 
-                            
 
                         }
                     }
@@ -146,7 +147,6 @@ public class PickUpItem : MonoBehaviour
             foreach (var boxx in ListOfBoxesInPlayer)
             {
                 height += boxx.transform.localScale.y / 50;
-                UnityEngine.Debug.Log(height);
                 boxx.transform.position = PositionWithPlayer.position + new UnityEngine.Vector3(0, height, 0);
             }
         }
@@ -155,6 +155,25 @@ public class PickUpItem : MonoBehaviour
         
 
         
+    }
+
+    public void GetOrderedBoxes(IReadOnlyCollection<BoxInfo> orderedBoxes, out IReadOnlyCollection<BoxInfo> givenBoxes)
+    {
+        List<BoxInfo> findedBoxes = new();
+
+        foreach (BoxInfo orderedBox in orderedBoxes)
+        {
+            Box findedBox = ListOfBoxesInPlayer.FirstOrDefault(box => box.Info == orderedBox);
+
+            if (findedBox != null)
+            {
+                findedBoxes.Add(findedBox.Info);
+                findedBox.gameObject.SetActive(false);
+                ListOfBoxesInPlayer.Remove(findedBox);
+            }
+        }
+
+        givenBoxes = findedBoxes;
     }
 
     private void OnDisable()

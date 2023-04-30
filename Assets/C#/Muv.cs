@@ -27,7 +27,8 @@ public class Muv : MonoBehaviour
 
     void Update()
     {
-        PlayerRun();
+        if (PlayerState.Instance.CurrentState == PlayerStates.PickedUpItem == false)
+            PlayerRun();
     }
     private void PlayerRun()
     {

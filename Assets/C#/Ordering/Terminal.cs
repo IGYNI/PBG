@@ -76,8 +76,8 @@ namespace Ordering
                 return;
             if (IsBroken == false)
                 return;
+
             IsBroken = false;
-            //Player.InHands = null 
 
             if (_isInteract)
             {

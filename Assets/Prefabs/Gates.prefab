@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5197589591633682080}
   - component: {fileID: 5197589591633682081}
   m_Layer: 0
-  m_Name: gates
+  m_Name: Gates
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5197589591633682086}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.5081015, y: -0.35179067, z: -4.3383636}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.7388827, y: 2.5051937, z: 0.24760191}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topPoint: {fileID: 5197589592931136224}
-  moveSpeed: 1
+  moveSpeed: 100
   stopDuration: 1
   openOnStart: 1
 --- !u!1 &5197589591647125264
@@ -142,8 +142,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5197589591910142909}
   - {fileID: 5197589592931136224}
+  - {fileID: 5197589591910142909}
   - {fileID: 5197589591633682093}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5197589591910142909}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Lowwer Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,13 +171,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5197589591910142898}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.5081015, y: -1.49, z: -4.3383636}
-  m_LocalScale: {x: 1.7388827, y: 2.5051937, z: 0.24760191}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5197589591647125267}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5197589592931136225
 GameObject:
@@ -189,7 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5197589592931136224}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Upper Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,10 +203,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5197589592931136225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.5081015, y: 2.23, z: -4.3383636}
-  m_LocalScale: {x: 1.7388827, y: 2.5051937, z: 0.24760191}
+  m_LocalPosition: {x: 0, y: 2.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5197589591647125267}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

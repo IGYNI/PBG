@@ -29,7 +29,6 @@ public class Ladder : MonoBehaviour
             {
                 Stesh.Slot = 1;
                 thisladder = 2;
-                Debug.Log("Work");
             }
             else
             {

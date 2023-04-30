@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +8,7 @@ namespace Ordering
     {
         [SerializeField] private GameObject _orderPanel;
         [SerializeField] private Button _closeButton, _interactButton, _getOrderButton, _fixButton;
-        [SerializeField] private Image[] _icons;
+        [SerializeField] private BoxIcon[] _icons;
         private Terminal _terminal;
 
         private void Awake()
@@ -67,7 +66,8 @@ namespace Ordering
             {
                 if (_terminal.CurrentOrder != null && i < _terminal.CurrentOrder.Boxes.Count)
                 {
-                    icon.color = _terminal.CurrentOrder.Boxes.ElementAt(i).Color;
+                    icon.Image.color = _terminal.CurrentOrder.Boxes.ElementAt(i).Color;
+                    icon.CarIndex.text = _terminal.CurrentOrder.Boxes.ElementAt(i).CarIndex.ToString();
                     icon.gameObject.SetActive(true);
                     i++;
                     continue;

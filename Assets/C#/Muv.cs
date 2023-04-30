@@ -31,7 +31,8 @@ public class Muv : MonoBehaviour
     {
         if (isUp==true)
         {
-          PlayerRun();
+            if (PlayerState.Instance.CurrentState == PlayerStates.PickedUpItem == false)
+                PlayerRun();
         }
         else
         {

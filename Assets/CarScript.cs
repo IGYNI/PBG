@@ -1,6 +1,6 @@
+using General;
 using NaughtyAttributes;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CarScript : MonoBehaviour
@@ -16,6 +16,12 @@ public class CarScript : MonoBehaviour
     private Vector3 startPosition; 
     private bool isMoving = false;
     private bool isMovingTooGamer = false;
+
+    private void OnEnable()
+    {
+        GameEvents.Instance.Subscribe(GameEventType.OrderCompleted, StartCar);
+    }
+
     private void Start()
     {
         startPosition = transform.position; 
@@ -37,7 +43,7 @@ public class CarScript : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, startPosition, step);
             if (transform.position == startPosition)
             {
-                isMovingTooGamer =false;
+                isMovingTooGamer = false;
             }
         }
 
@@ -46,14 +52,9 @@ public class CarScript : MonoBehaviour
     void StartCar()
     {
         if(Application.isPlaying == false)
-        {
             return;
-        }  
-        if (isRange == true)
-        {
-            isMoving = true;
-        }
 
+        isMoving = true;
     }
 
     IEnumerator TineStopCar()
@@ -62,21 +63,24 @@ public class CarScript : MonoBehaviour
         isMovingTooGamer=true;
 
     }
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        isRange = true;
+    //    }
+    //}
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        isRange = false;
+    //    }
+
+    //}
+
+    private void OnDisable()
     {
-        if (other.CompareTag("Player"))
-        {
-            isRange = true;
-        }
+        GameEvents.Instance.UnSubscribe(GameEventType.OrderCompleted, StartCar);
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isRange = false;
-        }
-
-    }
-
-
 }

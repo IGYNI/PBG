@@ -1557,16 +1557,16 @@ MonoBehaviour:
   _getOrderButton: {fileID: 2002332013}
   _fixButton: {fileID: 0}
   _icons:
-  - {fileID: 49453724}
-  - {fileID: 677014517}
-  - {fileID: 654113639}
-  - {fileID: 1977042274}
-  - {fileID: 414602902}
-  - {fileID: 1376490615}
-  - {fileID: 687825129}
-  - {fileID: 384789632}
-  - {fileID: 348899233}
-  - {fileID: 1978789876}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,6 +3141,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6459668467366775308, guid: 206644658cd56454bb4449d282feb962, type: 3}
   m_PrefabInstance: {fileID: 1430224858}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1444610855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1444610857}
+  - component: {fileID: 1444610856}
+  m_Layer: 0
+  m_Name: Player State
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1444610856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444610855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6913eb76fe88e534baff95524d544643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1444610857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444610855}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1560619900 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2993876784244799969, guid: c89474691dec7bf43a73539fb1e6247f, type: 3}
@@ -4647,12 +4691,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55568fd8dd77a8e47a57dd054a944f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allBoxes:
-  - {fileID: 11400000, guid: d2baeec60c9c2f24eafa404146d1962b, type: 2}
-  - {fileID: 11400000, guid: 8e92ce7e5ef2f444bbf337759b828933, type: 2}
-  - {fileID: 11400000, guid: 25c149ec42370e243b5e2fca5af14c21, type: 2}
-  - {fileID: 11400000, guid: 6e7f62a279019ac419ebf596a293a60a, type: 2}
-  - {fileID: 11400000, guid: 8c72ce821e14dd649ac039aa12873171, type: 2}
+  _database: {fileID: 0}
+  _allBoxes: []
   _triggerOffset: {x: 0, y: 0, z: -1}
   _triggerSize: {x: 2, y: 2, z: 2}
   _playerLayerMask:
@@ -4660,6 +4700,8 @@ MonoBehaviour:
     m_Bits: 8
   _uiPanel: {fileID: 690390979}
   _isInteract: 0
+  Player: {fileID: 0}
+  Sample_of_wrench: {fileID: 0}
   <OrderBoxesCount>k__BackingField: 3
 --- !u!65 &7779508722593752220
 BoxCollider:

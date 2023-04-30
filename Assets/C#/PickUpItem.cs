@@ -1,11 +1,7 @@
-using System.Numerics;
-using System.Diagnostics;
 using General;
 using Ordering;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
@@ -22,6 +18,8 @@ public class PickUpItem : MonoBehaviour
     private Transform _lastposBox;
     public int RangeOfGetting;
     public Tool SampleOfWrench;
+
+    public bool IsEmpty => ListOfBoxesInPlayer.Count == 0;
 
     private void OnEnable()
     {
@@ -143,17 +141,17 @@ public class PickUpItem : MonoBehaviour
             foreach (var boxx in ListOfBoxesInPlayer)
             {
                 height += boxx.transform.localScale.y / 50;
-                boxx.transform.position = PositionWithPlayer.position + new UnityEngine.Vector3(0, height, 0);
+                boxx.transform.position = PositionWithPlayer.position + new Vector3(0, height, 0);
             }
         }
-        _currentBox.transform.position = GetComponent<Transform>().position + new UnityEngine.Vector3(1, 1, 1);
+        _currentBox.transform.position = GetComponent<Transform>().position + new Vector3(1, 1, 1);
         _currentBox.transform.rotation = PositionWithPlayer.rotation;
         
 
         
     }
 
-    public void GetOrderedBoxes(IReadOnlyCollection<BoxInfo> orderedBoxes, out IReadOnlyCollection<BoxInfo> givenBoxes)
+    public void GetOrderedBoxes(IEnumerable<BoxInfo> orderedBoxes, out IReadOnlyCollection<BoxInfo> givenBoxes)
     {
         List<BoxInfo> findedBoxes = new();
 
@@ -164,6 +162,7 @@ public class PickUpItem : MonoBehaviour
             if (findedBox != null)
             {
                 findedBoxes.Add(findedBox.Info);
+                findedBox.transform.SetParent(null);
                 findedBox.gameObject.SetActive(false);
                 ListOfBoxesInPlayer.Remove(findedBox);
             }

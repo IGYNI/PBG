@@ -1,19 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Ordering
 {
     [Serializable]
     public class Order
     {
-        [SerializeField] private BoxInfo[] _boxes;
+        private List<BoxInfo> _boxes = new();
 
         public IReadOnlyCollection<BoxInfo> Boxes => _boxes;
+        public bool IsCompleted => _boxes.Count == 0;
 
-        public Order(BoxInfo[] boxes)
+        public Order(Database database, int boxesCount)
         {
-            _boxes = boxes;
+            int carsCount = 4;
+
+            for (int i = 0; i < boxesCount; i++)
+            {
+                _boxes.Add(new BoxInfo(database.GetRandomColor(), UnityEngine.Random.Range(1, carsCount)));
+            }
+        }
+
+        public void Remove(BoxInfo box) => _boxes.Remove(box);
+
+        public void Remove(IReadOnlyCollection<BoxInfo> boxes)
+        {
+            foreach (BoxInfo box in boxes)
+            {
+                _boxes.Remove(box);
+            }
         }
     }
 }

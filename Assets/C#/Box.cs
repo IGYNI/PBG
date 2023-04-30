@@ -3,6 +3,7 @@
 public class Box : MonoBehaviour
 {
     private MeshRenderer _meshRenderer;
+    private Rigidbody _rigidbody;
 
     public bool IsDefault { get; private set; }
     public BoxInfo Info { get; private set; }
@@ -10,6 +11,7 @@ public class Box : MonoBehaviour
     private void Awake()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     public void SetInfo(BoxInfo info)
@@ -23,6 +25,7 @@ public class Box : MonoBehaviour
     {
         IsDefault = true;
         Info = null;
+        _rigidbody.isKinematic = false;
         _meshRenderer.material.color = Color.white;
     }
 }

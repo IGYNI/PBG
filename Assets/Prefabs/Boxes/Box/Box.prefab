@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4514314544710191804}
   - component: {fileID: 4371307781696094196}
   - component: {fileID: 472471048943410805}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,12 +54,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8789419867432357811}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f6f319fa7e402d438302f76cec09c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 150
+  rotationSpeed: 100
   i: 0
 --- !u!23 &8789419867432357809
 MeshRenderer:
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 8789419867900694878}
   - component: {fileID: 8789419867900694873}
   - component: {fileID: 8789419867900694872}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side_front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 8789419869159074389}
   - component: {fileID: 8789419869159074388}
   - component: {fileID: 8789419869159074391}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side_front (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

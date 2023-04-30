@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,7 +35,6 @@ namespace Ordering
         {
             _orderPanel.SetActive(false);
             _interactButton.gameObject.SetActive(true);
-            UnityEngine.Debug.Log("1");
         }
 
         private void Interact()
@@ -69,15 +67,13 @@ namespace Ordering
         {
             _orderPanel.SetActive(false);
             _interactButton.gameObject.SetActive(true);
-            UnityEngine.Debug.Log("2");
             _closeButton.onClick.RemoveListener(HandleCloseClick);
             _interactButton.onClick.RemoveListener(Interact);
             _getOrderButton.onClick.RemoveListener(GetOrder);
             _orderPanel.SetActive(false);
             _interactButton.gameObject.SetActive(true);
-            UnityEngine.Debug.Log("3");
             gameObject.SetActive(false);
-            _fixButton.SetActive(false);
+            //_fixButton.gameObject.SetActive(false);
         }
     }
 }

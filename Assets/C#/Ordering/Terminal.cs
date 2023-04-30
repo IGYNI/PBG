@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using General;
+﻿using General;
 using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,7 +39,8 @@ namespace Ordering
             if (Application.isPlaying == false)
                 return;
 
-            Complete(CurrentOrder.Boxes);
+            if (CurrentOrder != null)
+                Complete(CurrentOrder.Boxes);
         }
 
         public void Complete(IReadOnlyCollection<BoxInfo> boxes)
@@ -88,14 +88,16 @@ namespace Ordering
         {
             if (Physics.CheckBox(transform.position + _triggerOffset, _triggerSize, transform.rotation, _playerLayerMask))
             {
-                if (_isInteract == false)
+                if (_isInteract == false && PlayerState.Instance.CurrentState == PlayerStates.Default)
                 {
+                    PlayerState.Instance.CurrentState = PlayerStates.InTerminal;
                     _isInteract = true;
                     _uiPanel.Open();
                 }
             }
-            else if (_isInteract)
+            else if (_isInteract && PlayerState.Instance.CurrentState == PlayerStates.InTerminal)
             {
+                PlayerState.Instance.CurrentState = PlayerStates.Default;
                 _isInteract = false;
                 _uiPanel.Close();
             }

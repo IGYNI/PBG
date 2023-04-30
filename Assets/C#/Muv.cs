@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Muv : MonoBehaviour
@@ -19,17 +20,49 @@ public class Muv : MonoBehaviour
     private float groundDistanse = 0.4f;
     private Camera _camera;
 
+    public bool isUp;
     private void Start()
     {
+        isUp = true;
         _camera = Camera.main;
     }
 
-
     void Update()
     {
-        if (PlayerState.Instance.CurrentState == PlayerStates.PickedUpItem == false)
-            PlayerRun();
+        if (isUp==true)
+        {
+          PlayerRun();
+        }
+        else
+        {
+            UpTuLaad();
+        }
+
     }
+
+    private void UpTuLaad()
+    {
+        
+        float verticalInput = Input.GetAxisRaw("Vertical");
+
+        Vector3 movement = new Vector3(0f, verticalInput, 0f).normalized * speed * Time.deltaTime;
+
+        Vector3 targetPosition = transform.position + movement;
+
+        // ограничиваем перемещение объекта в пределах границ BoxCollider
+        if (movementBounds.bounds.Contains(targetPosition))
+        {
+            transform.position = targetPosition;
+        }
+    }
+    public float speed = 5f;
+    public BoxCollider movementBounds;
+
+
+
+
+
+
     private void PlayerRun()
     {
         isGraund = Physics.CheckSphere(_groundChek.position, groundDistanse, groundMask);

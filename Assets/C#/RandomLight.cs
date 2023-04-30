@@ -1,3 +1,4 @@
+using Ordering;
 using UnityEngine;
 
 public class RandomLight : MonoBehaviour
@@ -10,7 +11,11 @@ public class RandomLight : MonoBehaviour
         {
             Light.SetActive(false);
         }
-
+        int randoms = UnityEngine.Random.Range(1, 21);
+        if (randoms == 1)
+        {
+            Terminal.Instance.Broke();
+        }
     }
 
 }

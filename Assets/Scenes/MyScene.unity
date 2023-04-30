@@ -1596,6 +1596,7 @@ GameObject:
   - component: {fileID: 486249589}
   - component: {fileID: 486249590}
   - component: {fileID: 486249591}
+  - component: {fileID: 486249592}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1793,6 +1794,20 @@ MonoBehaviour:
   Slot: 1
   _ladder: {fileID: 1560619900}
   <LadderView>k__BackingField: {fileID: 1834256966}
+--- !u!114 &486249592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486249581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5189819900cfb643a698c45d935cdc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tools:
+  - {fileID: 8905229785472974423, guid: cdf92e8d28067c84bab14b738af27946, type: 3}
 --- !u!1 &640673595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,8 +2227,6 @@ MonoBehaviour:
   - {fileID: 384789632}
   - {fileID: 348899233}
   - {fileID: 1978789876}
-  Player: {fileID: 0}
-  Sample_of_wrench: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2591,6 +2604,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &898440749 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8905229785472974423, guid: cdf92e8d28067c84bab14b738af27946, type: 3}
+  m_PrefabInstance: {fileID: 1985383514}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b0b93399697c64e9ce5fb8f5d61968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &953910381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5650,6 +5674,8 @@ MonoBehaviour:
     m_Bits: 8
   _uiPanel: {fileID: 690390979}
   _isInteract: 0
+  Player: {fileID: 486249590}
+  Sample_of_wrench: {fileID: 898440749}
   <OrderBoxesCount>k__BackingField: 3
 --- !u!65 &7779508722593752220
 BoxCollider:

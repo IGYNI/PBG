@@ -13,6 +13,8 @@ namespace Ordering
         [SerializeField] private LayerMask _playerLayerMask;
         [SerializeField] private UITerminalPanel _uiPanel;
         public bool _isInteract;
+        public Inventory Player;
+        public  Tool Sample_of_wrench;
 
         public bool IsBroken { get; private set; }
 
@@ -72,16 +74,14 @@ namespace Ordering
         {
             if (Application.isPlaying == false)
                 return;
-
             if (IsBroken == false)
                 return;
-
             IsBroken = false;
-
             if (_isInteract)
             {
                 _uiPanel.UpdateData();
             }
+            
         }
 
         private void FixedUpdate()

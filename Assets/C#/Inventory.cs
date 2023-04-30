@@ -6,4 +6,5 @@ public class Inventory : MonoBehaviour
 {
     public List<Box> ListOfBoxesInPlayerIN;
     public Tool InHands;
+    public bool IsInHandWrecnh;
 }

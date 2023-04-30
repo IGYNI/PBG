@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +11,6 @@ namespace Ordering
         [SerializeField] private Button _closeButton, _interactButton, _getOrderButton, _fixButton;
         [SerializeField] private Image[] _icons;
         private Terminal _terminal;
-        public Inventory Player;
-        public  Tool Sample_of_wrench;
 
         private void Awake()
         {
@@ -53,6 +52,7 @@ namespace Ordering
         {
             _interactButton.gameObject.SetActive(_terminal.IsBroken == false && _orderPanel.activeSelf == false);
             _fixButton.gameObject.SetActive(_terminal.IsBroken);
+            _fixButton.interactable = (_terminal.Player.InHands == _terminal.Sample_of_wrench);
 
             if(_orderPanel.activeSelf && _terminal.IsBroken)
             {

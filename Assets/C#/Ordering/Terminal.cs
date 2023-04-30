@@ -1,4 +1,5 @@
-﻿using General;
+﻿using System.Runtime.CompilerServices;
+using General;
 using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
@@ -63,10 +64,10 @@ namespace Ordering
             IsBroken = true;
 
             if (_isInteract)
-                _uiPanel.Close();
+                _uiPanel.UpdateData();
         }
 
-        [Button("Fix")]
+        [Button("Fix")] 
         public void Fix()
         {
             if (Application.isPlaying == false)
@@ -78,7 +79,9 @@ namespace Ordering
             IsBroken = false;
 
             if (_isInteract)
-                _uiPanel.Open();
+            {
+                _uiPanel.UpdateData();
+            }
         }
 
         private void FixedUpdate()
@@ -88,9 +91,7 @@ namespace Ordering
                 if (_isInteract == false)
                 {
                     _isInteract = true;
-
-                    if (IsBroken == false)
-                        _uiPanel.Open();
+                    _uiPanel.Open();
                 }
             }
             else if (_isInteract)

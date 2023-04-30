@@ -50,6 +50,7 @@ public class Ladder : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isRange=false;
+            other.transform.GetComponent<Inventory>().TakeBackAll();
         }
 
     }

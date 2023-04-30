@@ -15,6 +15,7 @@ public class Stesh : MonoBehaviour
         loanin = true;
         if (_ladder.activeSelf == false)
         {
+            GetComponent<Inventory>().TakeBackAll();
             Slot = 1;
         }
        
@@ -28,5 +29,6 @@ public class Stesh : MonoBehaviour
             Slot = 0;
             loanin = false; 
         }
+
     }
 }

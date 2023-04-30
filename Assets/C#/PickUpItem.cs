@@ -12,6 +12,7 @@ public class PickUpItem : MonoBehaviour
     public Transform PositionWithCamera;
     public Transform PositionWithPlayer;
     public Transform PositionWithHand;
+    public Transform PositionWithHandAnother;
     public GameObject GameObject;
     public GameObject TakeBoxBtn;
     private Box _currentBox; 
@@ -20,6 +21,7 @@ public class PickUpItem : MonoBehaviour
     private Transform _lastposBox;
     public int RangeOfGetting;
     public Tool SampleOfWrench;
+    public Tool SampleOfFlash;
 
     private void OnEnable()
     {
@@ -54,32 +56,33 @@ public class PickUpItem : MonoBehaviour
 
                     if (hitInfo.transform.TryGetComponent(out Tool tool))
                     {
-                        if (UnityEngine.Vector3.Distance(hitInfo.transform.position, GetComponent<Transform>().position) < RangeOfGetting)
+                        if (UnityEngine.Vector3.Distance(hitInfo.transform.position, GetComponent<Transform>().position) < RangeOfGetting && tool != GetComponent<Inventory>().InHands)
                         {
-                            if (GetComponent<Inventory>().InHands != null)
+                            //if (GetComponent<Inventory>().InHands != null)
+                            //{
+                            //    GetComponent<Inventory>().ListOfToolsInInventory.Add(GetComponent<Inventory>().InHands);
+                            //    GetComponent<Inventory>().InHands = tool;
+                            //    //GetComponent<Inventory>().UpdateSlots();
+                            //}
+                            if (SampleOfWrench == tool)
                             {
-                                GetComponent<Inventory>().ListOfToolsInInventory.Add(GetComponent<Inventory>().InHands);
                                 GetComponent<Inventory>().InHands = tool;
+                                hitInfo.transform.position = PositionWithHand.position;
+                                hitInfo.transform.rotation = PositionWithHand.rotation;
+                                hitInfo.transform.SetParent(GetComponent<Transform>());
                             }
-                            GetComponent<Inventory>().InHands = tool;
+                            if(SampleOfFlash == tool)
+                            {
+                                GetComponent<Inventory>().InHandsAnother = tool;
+                                hitInfo.transform.position = PositionWithHandAnother.position;
+                                hitInfo.transform.rotation = PositionWithHandAnother.rotation;
+                                hitInfo.transform.SetParent(GetComponent<Transform>());
+                            }
 
-                            GetComponent<Inventory>().IsInHandWrecnh = true;
-                            hitInfo.transform.SetParent(GetComponent<Transform>());
-                            hitInfo.transform.position = PositionWithHand.position;
-                            hitInfo.transform.rotation = PositionWithHand.rotation;
+                            
 
                         }
                     }
-                    if (hitInfo.transform.TryGetComponent(out Terminal term))
-                    {
-                        if (UnityEngine.Vector3.Distance(hitInfo.transform.position, GetComponent<Transform>().position) < RangeOfGetting)
-                        {
-                            if (GetComponent<Inventory>().InHands == SampleOfWrench)
-                            {
-                                return;
-                            }
-                        }
-                    } 
                 }
             }
         }

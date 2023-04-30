@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Box : MonoBehaviour
 {
+    [SerializeField] private Image[] _stickerPoints;
     private MeshRenderer _meshRenderer;
     private Rigidbody _rigidbody;
 
@@ -18,6 +20,7 @@ public class Box : MonoBehaviour
     {
         Info = info;
         _meshRenderer.material.color = info.Color;
+        //_stickerPoints[Random.Range(0, _stickerPoints.Length)].sprite = info.Sticker;
         IsDefault = false;
     }
 

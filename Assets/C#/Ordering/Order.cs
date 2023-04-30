@@ -17,7 +17,7 @@ namespace Ordering
 
             for (int i = 0; i < boxesCount; i++)
             {
-                _boxes.Add(new BoxInfo(database.GetRandomColor(), UnityEngine.Random.Range(1, carsCount)));
+                _boxes.Add(new BoxInfo(database.GetRandomColor(), /*database.GetRandomSticker(),*/ UnityEngine.Random.Range(1, carsCount)));
             }
         }
 

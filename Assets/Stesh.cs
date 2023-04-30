@@ -13,7 +13,7 @@ public class Stesh : MonoBehaviour
         
 
         loanin = true;
-        if (_ladder.activeSelf == true)
+        if (_ladder.activeSelf == false)
         {
             Slot = 1;
         }
@@ -23,7 +23,7 @@ public class Stesh : MonoBehaviour
 
     private void Update()
     {
-        if (_ladder.activeSelf == false && loanin == true)
+        if (_ladder.activeSelf == true && loanin == true)
         {
             Slot = 0;
             loanin = false; 

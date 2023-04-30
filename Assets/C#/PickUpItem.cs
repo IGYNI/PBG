@@ -1,3 +1,5 @@
+using System.Numerics;
+using System.Diagnostics;
 using General;
 using Ordering;
 using System.Collections.Generic;
@@ -96,19 +98,19 @@ public class PickUpItem : MonoBehaviour
             PlayerState.Instance.CurrentState = PlayerStates.Default;
             TakeBoxBtn.SetActive(false);
             _currentBox.transform.SetParent(GetComponent<Transform>());
-            Vector3 PlayerRotationn = new Vector3(GetComponent<Transform>().rotation.x, GetComponent<Transform>().rotation.y, GetComponent<Transform>().rotation.z) + new UnityEngine.Vector3(-90, 90, 0);
+            UnityEngine.Vector3 PlayerRotationn = new UnityEngine.Vector3(GetComponent<Transform>().rotation.x, GetComponent<Transform>().rotation.y, GetComponent<Transform>().rotation.z) + new UnityEngine.Vector3(-90, 90, 0);
             float hight = 0;
             foreach (var box in ListOfBoxesInPlayer)
             {
                 hight += box.transform.GetComponent<Transform>().localScale.y / 50;
             }
             hight += _currentBox.transform.GetComponent<Transform>().localScale.y  / 50;
-            _currentBox.transform.position = PositionWithPlayer.position + new Vector3(0, hight, 0);
+            _currentBox.transform.position = PositionWithPlayer.position + new UnityEngine.Vector3(0, hight, 0);
             _currentBox.transform.rotation =  PositionWithPlayer.rotation; //UnityEngine.Quaternion.Euler(PlayerRotationn.x, PlayerRotationn.y, PlayerRotationn.z);
             bool Wasnt = true;
-            foreach (var box in ListOfBoxesInPlayer)
+            foreach (var boxx in ListOfBoxesInPlayer)
             {
-                if (box == _currentBox)
+                if (boxx == _currentBox)
                     Wasnt = false;
             }
             if (Wasnt)
@@ -125,15 +127,25 @@ public class PickUpItem : MonoBehaviour
         _currentBox.transform.SetParent(null);
         _currentBox.GetComponent<Rigidbody>().isKinematic = false;
         TakeBoxBtn.SetActive(false);
-        _currentBox.transform.position = GetComponent<Transform>().position + new Vector3(1, 1, 1);
-        _currentBox.transform.rotation = PositionWithPlayer.rotation;
         Box box = ListOfBoxesInPlayer.SingleOrDefault(box => box == _currentBox);
-
         if (box != null)
         {
+            
             ListOfBoxesInPlayer.Remove(box);
             GetComponent<Inventory>().ListOfBoxesInPlayerIN.Remove(box);
+            float height = 0;
+            foreach (var boxx in ListOfBoxesInPlayer)
+            {
+                height += boxx.transform.localScale.y / 50;
+                UnityEngine.Debug.Log(height);
+                boxx.transform.position = PositionWithPlayer.position + new UnityEngine.Vector3(0, height, 0);
+            }
         }
+        _currentBox.transform.position = GetComponent<Transform>().position + new UnityEngine.Vector3(1, 1, 1);
+        _currentBox.transform.rotation = PositionWithPlayer.rotation;
+        
+
+        
     }
 
     private void OnDisable()

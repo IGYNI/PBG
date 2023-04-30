@@ -1,7 +1,17 @@
+using System;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Box Info", fileName = "New Box")]
-public class BoxInfo : ScriptableObject
+[Serializable]
+public class BoxInfo
 {
-    [field: SerializeField ] public Color Color { get; private set; }
+    public Color Color { get; set; }
+    public int CarIndex { get; set; }
+    //public Sprite Sticker { get; set; }
+
+    public BoxInfo(Color color, /*Sprite sprite,*/ int carIndex)
+    {
+        Color = color;
+        //Sticker = sprite;
+        CarIndex = carIndex;
+    }
 }

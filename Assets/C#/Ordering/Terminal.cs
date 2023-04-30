@@ -7,7 +7,7 @@ namespace Ordering
 {
     public class Terminal : SceneSingletone<Terminal>
     {
-        [SerializeField] private BoxInfo[] _allBoxes;
+        [SerializeField] private Database _database;
         [SerializeField] private Vector3 _triggerOffset, _triggerSize;
         [SerializeField] private LayerMask _playerLayerMask;
         [SerializeField] private UITerminalPanel _uiPanel;
@@ -22,14 +22,7 @@ namespace Ordering
 
         public void CreateOrder()
         {
-            BoxInfo[] randomBoxes = new BoxInfo[OrderBoxesCount];
-
-            for (int i = 0; i < OrderBoxesCount; i++)
-            {
-                randomBoxes[i] = _allBoxes[Random.Range(0, _allBoxes.Length)];
-            }
-
-            CurrentOrder = new(randomBoxes);
+            CurrentOrder = new(_database, OrderBoxesCount);
             GameEvents.Instance.Dispatch(GameEventType.OrderCreated);
         }
 
@@ -45,9 +38,17 @@ namespace Ordering
 
         public void Complete(IReadOnlyCollection<BoxInfo> boxes)
         {
-            if (boxes.Equals(CurrentOrder.Boxes))
+            CurrentOrder.Remove(boxes);
+
+            if (CurrentOrder.IsCompleted)
             {
-                OrderBoxesCount++;
+                if (OrderBoxesCount >= 8)
+                {
+                    OrderBoxesCount = 8;
+                }
+                else
+                    OrderBoxesCount++;
+
                 CurrentOrder = null;
                 _uiPanel.UpdateData();
                 GameEvents.Instance.Dispatch(GameEventType.OrderCompleted);

@@ -6,25 +6,23 @@ namespace Ordering
 {
     public class OrderTrigger : MonoBehaviour
     {
-        private List<BoxInfo> _orderedBoxes = new();
-
-        [field: SerializeField] public int Index { get; }
-
-        public void SetOrderedBoxes(IReadOnlyCollection<BoxInfo> boxes)
-        {
-            _orderedBoxes.AddRange(boxes);
-        }
+        [field: SerializeField] public int Index { get; private set; }
+        public bool IsCompleted { get; set; }
 
         private void OnTriggerEnter(Collider other)
         {
+            if (Terminal.Instance.CurrentOrder == null)
+                return;
+
             if (other.TryGetComponent(out PickUpItem bag))
             {
-                bag.GetOrderedBoxes(_orderedBoxes, out IReadOnlyCollection<BoxInfo> findedBoxes);
+                if (bag.IsEmpty)
+                    return;
 
-                for (int i = 0; i < findedBoxes.Count; i++)
-                {
-                    _orderedBoxes.Remove(findedBoxes.ElementAt(i));
-                }
+                bag.GetOrderedBoxes(Terminal.Instance.CurrentOrder.Boxes
+                    .Where(orderedBox => orderedBox.CarIndex == Index), out IReadOnlyCollection<BoxInfo> findedBoxes);
+
+                Terminal.Instance.Complete(findedBoxes);
             }
         }
     }

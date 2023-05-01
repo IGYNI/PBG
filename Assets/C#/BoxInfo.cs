@@ -4,8 +4,11 @@ using UnityEngine;
 [Serializable]
 public class BoxInfo
 {
+    
     public Color Color { get; set; }
+    public string[] Stickers {get; set;}
     public int CarIndex { get; set; }
+    public string CatOfBox { get; set; }
     //public Sprite Sticker { get; set; }
 
     public BoxInfo(Color color, /*Sprite sprite,*/ int carIndex)

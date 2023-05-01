@@ -14,7 +14,6 @@ public class PickUpItem : MonoBehaviour
     public GameObject GameObject;
     public GameObject TakeBoxBtn;
     private Box _currentBox; 
-    private Transform hitbox = null;
     private List<Box> ListOfBoxesInPlayer = new();
     private Transform _lastposBox;
     public int RangeOfGetting;
@@ -41,12 +40,16 @@ public class PickUpItem : MonoBehaviour
             //hitbox = hitInfo.transform;
             if (Input.GetMouseButtonDown(0))
             {
+                UnityEngine.Debug.Log("1");
                 if (PlayerState.Instance.CurrentState == PlayerStates.Default)
                 {
+                    UnityEngine.Debug.Log("2");
                     if (hitInfo.transform.TryGetComponent(out Box box))
                     {
+                        UnityEngine.Debug.Log("3");
                         if (UnityEngine.Vector3.Distance(hitInfo.transform.position, GetComponent<Transform>().position) < RangeOfGetting)
                         {
+                            UnityEngine.Debug.Log("4");
                             PlayerState.Instance.CurrentState = PlayerStates.PickedUpItem;
                             _currentBox = box;
                             _currentBox.GetComponent<Rigidbody>().isKinematic = true;
@@ -56,23 +59,29 @@ public class PickUpItem : MonoBehaviour
 
                     if (hitInfo.transform.TryGetComponent(out Tool tool))
                     {
+                        UnityEngine.Debug.Log("5");
                         if (UnityEngine.Vector3.Distance(hitInfo.transform.position, GetComponent<Transform>().position) < RangeOfGetting && tool != GetComponent<Inventory>().InHands)
                         {
-                            //if (GetComponent<Inventory>().InHands != null)
-                            //{
-                            //    GetComponent<Inventory>().ListOfToolsInInventory.Add(GetComponent<Inventory>().InHands);
-                            //    GetComponent<Inventory>().InHands = tool;
-                            //    //GetComponent<Inventory>().UpdateSlots();
-                            //}
+                            if (GetComponent<Inventory>().InHands != null)
+                            {
+                                UnityEngine.Debug.Log("6");
+                                GetComponent<Inventory>().ListOfToolsInInventory.Add(GetComponent<Inventory>().InHands);
+                                GetComponent<Inventory>().InHands = tool;
+                                //GetComponent<Inventory>().UpdateSlots();
+                            }
+
                             if (SampleOfWrench == tool)
                             {
+                                UnityEngine.Debug.Log("7");
                                 GetComponent<Inventory>().InHands = tool;
                                 hitInfo.transform.position = PositionWithHand.position;
                                 hitInfo.transform.rotation = PositionWithHand.rotation;
                                 hitInfo.transform.SetParent(GetComponent<Transform>());
                             }
+                            UnityEngine.Debug.Log(SampleOfFlash == tool);
                             if(SampleOfFlash == tool)
                             {
+                                UnityEngine.Debug.Log("8");
                                 GetComponent<Inventory>().InHandsAnother = tool;
                                 hitInfo.transform.position = PositionWithHandAnother.position;
                                 hitInfo.transform.rotation = PositionWithHandAnother.rotation;

@@ -7390,86 +7390,10 @@ PrefabInstance:
       propertyPath: GameObject
       value: 
       objectReference: {fileID: 1812416339}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_XMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_YMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_ZMotion
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_AngularXMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_AngularYMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_AngularZMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.692
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: -0.246
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_XDrive.positionDamper
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_XDrive.positionSpring
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_YDrive.positionDamper
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_YDrive.positionSpring
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422188, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_AutoConfigureConnectedAnchor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422189, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422189, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422189, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777345133427422189, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1777345133427422190, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
       propertyPath: Bar
       value: 
       objectReference: {fileID: 1847165867}
-    - target: {fileID: 1777345133427422190, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
-      propertyPath: JecpacBar
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 1777345133427422190, guid: 5ebe07961333c7e49a40a0f1a11cee75, type: 3}
       propertyPath: cameraTransform
       value: 

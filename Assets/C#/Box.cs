@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Box : MonoBehaviour
 {
+    [SerializeField] private Canvas[] _canvases;
     [SerializeField] private Image[] _stickerPoints;
     [SerializeField] private TMP_Text _documentText;
     private MeshRenderer _meshRenderer;
@@ -17,7 +18,6 @@ public class Box : MonoBehaviour
     {
         _meshRenderer = GetComponent<MeshRenderer>();
         _rigidbody = GetComponent<Rigidbody>();
-
     }
 
     public void ResetByDefault()
@@ -32,10 +32,13 @@ public class Box : MonoBehaviour
         _stickerPoints
             .Where(point => point.isActiveAndEnabled).ToList()
             .ForEach(point => point.gameObject.SetActive(false));
+
+        _canvases.ToList().ForEach(side => side.gameObject.SetActive(false));
     }
 
     public void SetInfo(BoxInfo info)
     {
+        _canvases.ToList().ForEach(side => side.gameObject.SetActive(true));
         Info = info;
         _meshRenderer.material.color = info.Color;
         _documentText.text = info.Document.Text;

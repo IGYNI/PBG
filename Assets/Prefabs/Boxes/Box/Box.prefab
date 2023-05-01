@@ -837,7 +837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8852293271351413275
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1426,7 +1426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6718931221169291214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2087,6 +2087,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0778c1503ae7a946a129935dce049f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvases:
+  - {fileID: 8789419867900694878}
+  - {fileID: 8789419869159074389}
+  - {fileID: 5228269091152377639}
+  - {fileID: 7514944154887787606}
   _stickerPoints:
   - {fileID: 6706951870374716376}
   - {fileID: 4126504425584621286}
@@ -2156,7 +2161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8789419867900694875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2260,7 +2265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8789419869159074390
 RectTransform:
   m_ObjectHideFlags: 0

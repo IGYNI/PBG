@@ -1,5 +1,6 @@
 ﻿using General;
 using Ordering;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,7 +10,6 @@ namespace StorageGeneration
     public class StorageGenerator : SceneSingletone<StorageGenerator>
     {
         [SerializeField] private Box _boxPrefab;
-        [SerializeField] private string[] TypesOfStickers;
         private Stack[] _stacks;
         private List<Transform> _allPoints = new();
         private List<Box> _allBoxes = new();
@@ -18,7 +18,7 @@ namespace StorageGeneration
 
         protected override void Init()
         {
-            _boxPool = new(CreateBox, transform, 500);
+            _boxPool = new(CreateBox, transform, 10);
             _stacks = FindObjectsByType<Stack>(FindObjectsSortMode.InstanceID);
             _stacks.ToList().ForEach(stack => _allPoints.AddRange(stack.BoxPoints));
         }
@@ -35,18 +35,24 @@ namespace StorageGeneration
             _boxPool.ReleaseAll();
             _allBoxes.Clear();
 
+            StartCoroutine(GenerationRoutine());
+
+            foreach (BoxInfo info in orderedBoxes)
+            {
+                IEnumerable<Box> defaultBoxes = _allBoxes.Where(box => box.IsDefault);
+                defaultBoxes.ElementAt(Random.Range(0, defaultBoxes.Count())).SetInfo(info);
+            }
+        }
+
+        private IEnumerator GenerationRoutine()
+        {
             foreach (Transform point in _allPoints)
             {
                 Box box = _boxPool.Get(point.transform.position);
                 box.transform.rotation = Random.rotation;
                 box.ResetByDefault();
                 _allBoxes.Add(box);
-            }
-
-            foreach (BoxInfo info in orderedBoxes)
-            {
-                IEnumerable<Box> defaultBoxes = _allBoxes.Where(box => box.IsDefault);
-                defaultBoxes.ElementAt(Random.Range(0, defaultBoxes.Count())).SetInfo(info);
+                yield return null;
             }
         }
 

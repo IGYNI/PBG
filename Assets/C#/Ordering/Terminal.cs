@@ -2,12 +2,11 @@
 using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Ordering
 {
-    public class Terminal : SceneSingletone<Terminal>
+    public class Terminal : SceneSingletone<Terminal>, IBrokable
     {
         [SerializeField] private Database _database;
         [SerializeField] private Vector3 _triggerOffset, _triggerSize;

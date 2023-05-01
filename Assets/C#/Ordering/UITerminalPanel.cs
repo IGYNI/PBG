@@ -6,6 +6,7 @@ namespace Ordering
 {
     public class UITerminalPanel : MonoBehaviour
     {
+        [SerializeField] private InfoPanel _info;
         [SerializeField] private GameObject _orderPanel;
         [SerializeField] private Button _closeButton, _interactButton, _getOrderButton, _fixButton;
         [SerializeField] private BoxIcon[] _icons;
@@ -43,7 +44,6 @@ namespace Ordering
         {
             _interactButton.gameObject.SetActive(false);
             _orderPanel.SetActive(true);
-
         }
 
 
@@ -52,7 +52,7 @@ namespace Ordering
             _interactButton.gameObject.SetActive(_terminal.IsBroken == false && _orderPanel.activeSelf == false);
             _fixButton.gameObject.SetActive(_terminal.IsBroken);
             _fixButton.interactable = (_terminal.Player.InHands == _terminal.Sample_of_wrench);
-            
+            _info.gameObject.SetActive(false);
 
             if(_orderPanel.activeSelf && _terminal.IsBroken)
             {
@@ -66,6 +66,7 @@ namespace Ordering
             {
                 if (_terminal.CurrentOrder != null && i < _terminal.CurrentOrder.Boxes.Count)
                 {
+                    icon.Description = _terminal.CurrentOrder.Boxes.ElementAt(i).Document.Text;
                     icon.Image.color = _terminal.CurrentOrder.Boxes.ElementAt(i).Color;
                     icon.CarIndex.text = _terminal.CurrentOrder.Boxes.ElementAt(i).CarIndex.ToString();
                     icon.gameObject.SetActive(true);

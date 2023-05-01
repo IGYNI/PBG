@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 4921741621455584596}
   - component: {fileID: 8862976516240306118}
   - component: {fileID: 6884616444865688406}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ladder Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5817610760085700002}
   - component: {fileID: 7403085140187885429}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -850,7 +850,7 @@ GameObject:
   - component: {fileID: 2264478204187596350}
   - component: {fileID: 5396058293910914523}
   - component: {fileID: 1261748735968155455}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ladder Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2123,7 +2123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5724037605693886966}
   - component: {fileID: 5751709462174380091}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3911372673349833027}
   - component: {fileID: 3231974121962814650}
   m_Layer: 7
-  m_Name: Firephobe
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,6 +76,141 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &326168738078087211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9188574361573864292}
+  - component: {fileID: 8047593070842608796}
+  - component: {fileID: 5860128076552410674}
+  m_Layer: 7
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9188574361573864292
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326168738078087211}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3443495700475979536}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8047593070842608796
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326168738078087211}
+  m_CullTransparentMesh: 1
+--- !u!114 &5860128076552410674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326168738078087211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: ???
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 100
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 10
+  m_fontSizeMax: 100
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &579653413747352225
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +223,7 @@ GameObject:
   - component: {fileID: 1635398833259919119}
   - component: {fileID: 2670621120003383530}
   m_Layer: 7
-  m_Name: HaveHydrophobe
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +299,7 @@ GameObject:
   - component: {fileID: 9100439112233903181}
   - component: {fileID: 6706951870374716376}
   m_Layer: 7
-  m_Name: 'HaveSadFace '
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,7 +375,7 @@ GameObject:
   - component: {fileID: 8241273557327862519}
   - component: {fileID: 4143585130938501231}
   m_Layer: 7
-  m_Name: 'HaveSadFace '
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -316,7 +451,7 @@ GameObject:
   - component: {fileID: 1108429826978400470}
   - component: {fileID: 4102733417351786446}
   m_Layer: 7
-  m_Name: HaveHydrophobe
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,7 +527,7 @@ GameObject:
   - component: {fileID: 1324325528839656121}
   - component: {fileID: 669993569479165893}
   m_Layer: 7
-  m_Name: 'Firephobe '
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -468,7 +603,7 @@ GameObject:
   - component: {fileID: 1011455096357257782}
   - component: {fileID: 5720378126095168379}
   m_Layer: 7
-  m_Name: Firephobe
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -544,7 +679,7 @@ GameObject:
   - component: {fileID: 9103224913984996825}
   - component: {fileID: 2006279331436587695}
   m_Layer: 7
-  m_Name: 'Fragile '
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -620,7 +755,7 @@ GameObject:
   - component: {fileID: 4714572227278152917}
   - component: {fileID: 991473002538616593}
   m_Layer: 7
-  m_Name: HaveSadFace
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -696,7 +831,6 @@ GameObject:
   - component: {fileID: 7514944154887787606}
   - component: {fileID: 3304685366036080102}
   - component: {fileID: 7133044798287072478}
-  - component: {fileID: 8288526158970805664}
   m_Layer: 7
   m_Name: Side_daun
   m_TagString: Untagged
@@ -789,23 +923,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8288526158970805664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2485003455234610327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d294a152c8505b04fb24f2121e0a126a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StickersOfSide:
-  - {fileID: 4767701932110017883}
-  - {fileID: 8486791914438022822}
-  - {fileID: 6620281602976118283}
-  - {fileID: 3725776430575434681}
 --- !u!1 &2777085716376827530
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +935,6 @@ GameObject:
   - component: {fileID: 2907517450357618640}
   - component: {fileID: 1714295051527865135}
   - component: {fileID: 2785376190576912848}
-  - component: {fileID: 5664350351886024928}
   m_Layer: 7
   m_Name: Side_front
   m_TagString: Untagged
@@ -842,7 +958,7 @@ RectTransform:
   - {fileID: 2423613491902869801}
   - {fileID: 5277955766458719141}
   - {fileID: 1506717359849531679}
-  - {fileID: 5255961794367880217}
+  - {fileID: 3443495700475979536}
   m_Father: {fileID: 8789419867432357815}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
@@ -868,7 +984,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -912,23 +1028,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5664350351886024928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2777085716376827530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d294a152c8505b04fb24f2121e0a126a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StickersOfSide:
-  - {fileID: 8818920981952002443}
-  - {fileID: 8410645707199250148}
-  - {fileID: 5825122641258444590}
-  - {fileID: 1649828021170903849}
 --- !u!1 &3725776430575434681
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,7 +1040,7 @@ GameObject:
   - component: {fileID: 7029642606931743823}
   - component: {fileID: 6138327939902557547}
   m_Layer: 7
-  m_Name: 'Fragile '
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1017,7 +1116,7 @@ GameObject:
   - component: {fileID: 7309867920950969877}
   - component: {fileID: 6099089229928595517}
   m_Layer: 7
-  m_Name: 'Firephobe '
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1093,7 +1192,7 @@ GameObject:
   - component: {fileID: 1708714234033593226}
   - component: {fileID: 4544903768293934331}
   m_Layer: 7
-  m_Name: 'HaveSadFace '
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1169,7 +1268,7 @@ GameObject:
   - component: {fileID: 4047524068057137639}
   - component: {fileID: 4126504425584621286}
   m_Layer: 7
-  m_Name: 'Fragile '
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1245,7 +1344,7 @@ GameObject:
   - component: {fileID: 2323755020374983631}
   - component: {fileID: 2878812462468992454}
   m_Layer: 7
-  m_Name: Fragile
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1309,83 +1408,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &5827032969962493110
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5255961794367880217}
-  - component: {fileID: 2597919374188427003}
-  - component: {fileID: 4778171845586482974}
-  m_Layer: 7
-  m_Name: DocumentOfBox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &5255961794367880217
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5827032969962493110}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6699403346839301562}
-  m_Father: {fileID: 3916150875007043389}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -34, y: -40}
-  m_SizeDelta: {x: 548.5714, y: 308.57144}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &2597919374188427003
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5827032969962493110}
-  m_CullTransparentMesh: 1
---- !u!114 &4778171845586482974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5827032969962493110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 13338b7e328fc174fbb31b9091bbd5a4, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6304891993268005286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,7 +1420,6 @@ GameObject:
   - component: {fileID: 5228269091152377639}
   - component: {fileID: 2186688686744964108}
   - component: {fileID: 6604130002452673251}
-  - component: {fileID: 3148803065109811379}
   m_Layer: 7
   m_Name: Side_back
   m_TagString: Untagged
@@ -1491,23 +1512,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3148803065109811379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6304891993268005286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d294a152c8505b04fb24f2121e0a126a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StickersOfSide:
-  - {fileID: 2202513847440853732}
-  - {fileID: 8076898485938113924}
-  - {fileID: 46533020835094220}
-  - {fileID: 579653413747352225}
 --- !u!1 &6620281602976118283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,7 +1524,7 @@ GameObject:
   - component: {fileID: 6877617372332966084}
   - component: {fileID: 4304121195493910676}
   m_Layer: 7
-  m_Name: 'Firephobe '
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1584,7 +1588,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &7223628016632421831
+--- !u!1 &6917823930867263521
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1592,78 +1596,75 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6699403346839301562}
-  - component: {fileID: 5192852697992906148}
-  - component: {fileID: 493293570553424959}
+  - component: {fileID: 3443495700475979536}
+  - component: {fileID: 3782021022176517530}
+  - component: {fileID: 487727415153502864}
   m_Layer: 7
-  m_Name: NameWhatInBox
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &6699403346839301562
+--- !u!224 &3443495700475979536
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7223628016632421831}
+  m_GameObject: {fileID: 6917823930867263521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5255961794367880217}
-  m_RootOrder: 0
+  m_Children:
+  - {fileID: 9188574361573864292}
+  m_Father: {fileID: 3916150875007043389}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30.6, y: 116.4}
-  m_SizeDelta: {x: 226.2, y: 71.2}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -100, y: -100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &5192852697992906148
+--- !u!222 &3782021022176517530
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7223628016632421831}
+  m_GameObject: {fileID: 6917823930867263521}
   m_CullTransparentMesh: 1
---- !u!114 &493293570553424959
+--- !u!114 &487727415153502864
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7223628016632421831}
+  m_GameObject: {fileID: 6917823930867263521}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-    m_FontSize: 15
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 194
-    m_Alignment: 1
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Ecological screwdriver (without base and everything that contains iron)
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8076898485938113924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,7 +1677,7 @@ GameObject:
   - component: {fileID: 7718756014306533433}
   - component: {fileID: 5973314647495372502}
   m_Layer: 7
-  m_Name: Fragile
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1752,7 +1753,7 @@ GameObject:
   - component: {fileID: 5442814663719885995}
   - component: {fileID: 8885666786727433402}
   m_Layer: 7
-  m_Name: HaveHydrophobe
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1828,7 +1829,7 @@ GameObject:
   - component: {fileID: 8778527910695565343}
   - component: {fileID: 8498732484223047684}
   m_Layer: 7
-  m_Name: HaveHydrophobe
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1904,7 +1905,7 @@ GameObject:
   - component: {fileID: 6225265686872187684}
   - component: {fileID: 8353321487183248345}
   m_Layer: 7
-  m_Name: HaveHydrophobe
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1983,7 +1984,6 @@ GameObject:
   - component: {fileID: 4514314544710191804}
   - component: {fileID: 4371307781696094196}
   - component: {fileID: 472471048943410805}
-  - component: {fileID: 5932974476735567031}
   m_Layer: 7
   m_Name: Box
   m_TagString: Untagged
@@ -2087,14 +2087,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0778c1503ae7a946a129935dce049f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stickers: []
-  CanvasSides:
-  - {fileID: 8789419867900694878}
-  - {fileID: 8789419869159074389}
-  - {fileID: 2907517450357618640}
-  - {fileID: 5228269091152377639}
-  - {fileID: 7514944154887787606}
-  TextOfNameBox: {fileID: 493293570553424959}
+  _stickerPoints:
+  - {fileID: 6706951870374716376}
+  - {fileID: 4126504425584621286}
+  - {fileID: 669993569479165893}
+  - {fileID: 4102733417351786446}
+  - {fileID: 4143585130938501231}
+  - {fileID: 2006279331436587695}
+  - {fileID: 6099089229928595517}
+  - {fileID: 8885666786727433402}
+  - {fileID: 5027888178289007672}
+  - {fileID: 8498732484223047684}
+  - {fileID: 2878812462468992454}
+  - {fileID: 5720378126095168379}
+  - {fileID: 991473002538616593}
+  - {fileID: 5973314647495372502}
+  - {fileID: 3231974121962814650}
+  - {fileID: 2670621120003383530}
+  - {fileID: 4544903768293934331}
+  - {fileID: 8353321487183248345}
+  - {fileID: 4304121195493910676}
+  - {fileID: 6138327939902557547}
+  _documentText: {fileID: 5860128076552410674}
 --- !u!65 &4371307781696094196
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2124,79 +2138,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5932974476735567031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8789419867432357811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f29748725928e1489179e4f0941f834, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Categorys:
-  - Weapon
-  - Food
-  - Tools
-  - Clothe
-  - Animals
-  Weapon:
-  - BallsBreaker
-  - Desk tank
-  - Dora
-  - Revolver with extended magazine
-  - Pocket minigun
-  - Knife with two handles (for couples)
-  - Spray from ridding children
-  - D**do launcher
-  - Anti-tank lego
-  - Ecological flamethrower
-  Food:
-  - Uranium (a lot of calories)
-  - Orange peel
-  - Packaging with chips with additional 120% air
-  - Salad of granite stones
-  - Homesh*t
-  - The smell of coffee
-  - Oppressed ice cream
-  - Fried flea
-  - Nails
-  - Vegetarian air
-  Tools:
-  - Children
-  - Not a hammer
-  - Chisel inside
-  - Gaming key with RGB backlight
-  - Pocket Opener of evaders Door
-  - Letter calculator
-  - Three-sided tape
-  - Ecological screwdriver (without base and everything that contains iron)
-  - Flat screw (as my humor)
-  - Flashlight (you know with what)
-  Clothe:
-  - Ultra thin thong
-  - Latex school suit
-  - Rope tie and soap
-  - One red moccasin
-  - BDSM sneaker (against BDSM bugs)
-  - Virtual reality glass (one from glasses)
-  - Watches that for some reason go back
-  - Transparent underwear
-  - that second sock
-  - Teeth bracelet
-  Animals:
-  - Elephant (alive)
-  - Giraffe (alive)
-  - Whale (alive)
-  - Dinosaur (alive)
-  - Man (probably alive)
-  - Horse (alive)
-  - Hippo (alive)
-  - "\u0421apybara (alive)"
-  - Python (alive)
-  - Aggressive alive nothing
 --- !u!1 &8789419867900694874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,7 +2150,6 @@ GameObject:
   - component: {fileID: 8789419867900694878}
   - component: {fileID: 8789419867900694873}
   - component: {fileID: 8789419867900694872}
-  - component: {fileID: 5475945825564084366}
   m_Layer: 7
   m_Name: Side_right
   m_TagString: Untagged
@@ -2302,23 +2242,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5475945825564084366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8789419867900694874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d294a152c8505b04fb24f2121e0a126a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StickersOfSide:
-  - {fileID: 708642797538488942}
-  - {fileID: 5455544817854816172}
-  - {fileID: 1643786444655128776}
-  - {fileID: 1438729107332612509}
 --- !u!1 &8789419869159074385
 GameObject:
   m_ObjectHideFlags: 0
@@ -2331,7 +2254,6 @@ GameObject:
   - component: {fileID: 8789419869159074389}
   - component: {fileID: 8789419869159074388}
   - component: {fileID: 8789419869159074391}
-  - component: {fileID: 5279805044660913373}
   m_Layer: 7
   m_Name: Side_left
   m_TagString: Untagged
@@ -2424,23 +2346,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5279805044660913373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8789419869159074385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d294a152c8505b04fb24f2121e0a126a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StickersOfSide:
-  - {fileID: 1287145592678009789}
-  - {fileID: 1720572397180439571}
-  - {fileID: 4704165057542171087}
-  - {fileID: 8117023126315264872}
 --- !u!1 &8818920981952002443
 GameObject:
   m_ObjectHideFlags: 0
@@ -2453,7 +2358,7 @@ GameObject:
   - component: {fileID: 654026937744462336}
   - component: {fileID: 5027888178289007672}
   m_Layer: 7
-  m_Name: HaveSadFace
+  m_Name: Sticker Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

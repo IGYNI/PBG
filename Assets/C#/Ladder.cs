@@ -49,10 +49,11 @@ public class Ladder : MonoBehaviour
             time -= Time.deltaTime;
             if(time < 0)
             {
+                Muv.isUp = false;
+               
                 upLadder=false;
                 Stesh.gameObject.transform.position = PointUp.transform.position;
-                Muv.isUp = false;
-                Muv.movementBounds = BoxCollider;
+                Stesh.gameObject.transform.rotation = newParent.transform.rotation;
             }
             else
             {

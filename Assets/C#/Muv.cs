@@ -1,104 +1,191 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using DG.Tweening;
+using System.Drawing;
 using UnityEngine;
 
 public class Muv : MonoBehaviour
 {
-    [SerializeField] private CharacterController _controller;
+    public bool isUp;
+    public float xRotation = 60f;
+    public float verticalInput;
+  
+
+
+    [SerializeField]
+    private float rotationSpeed;
+
+    [SerializeField]
+    private Transform cameraTransform;
     [SerializeField] private Transform _groundChek;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] float _speed = 7f;
-
-    //public Animator animator;
-
+    public Bar Bar;
+   
     private float _turntime = 0.1f;
     private float turn;
-    private float gravity = -1;
-    private Vector3 velocity;
+    private float gravity = 1;
+    public Vector3 velocity;
     private bool isGraund;
     private float groundDistanse = 0.4f;
-    private Camera _camera;
 
-    public bool isUp;
-    private void Start()
+    public Animator animator;
+    private CharacterController characterController;
+    private float ySpeed;
+    private float originalStepOffset;
+    private float? lastGroundedTime;
+
+    private float JecpacBar = 30f;
+    // Start is called before the first frame update
+    void Start()
     {
         isUp = true;
-        _camera = Camera.main;
+        characterController = GetComponent<CharacterController>();
+        originalStepOffset = characterController.stepOffset;
     }
 
+    private bool isjec;
     void Update()
     {
-        if (isUp==true)
+      
+        isGraund = Physics.CheckSphere(_groundChek.position, groundDistanse, groundMask);
+        if (Input.GetKey(KeyCode.Space))
         {
+            isjec = true;
+            Jecpac();
+        }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            isjec = true;
+            JecpacDawn();
+        }
+        if (isGraund)
+        {
+            if (JecpacBar < 30)
+            {
+                JecpacBar += Time.deltaTime;
+            }
+            Bar.SetHealt(JecpacBar);
             if (PlayerState.Instance.CurrentState == PlayerStates.PickedUpItem == false)
+            {
+                isjec = false;
                 PlayerRun();
+            }
         }
-        else
+        else if(JecpacBar>0)
         {
-            UpTuLaad();
+            JecpacBar -= Time.deltaTime;
+            Bar.SetHealt(JecpacBar);
+            Fly();
+            
         }
-
+        if(JecpacBar <= 0)
+        {
+            JecpacDawn();
+        }
     }
-
-    private void UpTuLaad()
+    
+    private void Jecpac()
     {
+        animator.SetBool("IsMoving", false);
         
-        float verticalInput = Input.GetAxisRaw("Vertical");
+       
+           //Grav
+             velocity.y = -2f;
 
-        Vector3 movement = new Vector3(0f, verticalInput, 0f).normalized * speed * Time.deltaTime;
+        velocity.y -= gravity * Time.deltaTime;
+       characterController.Move(-velocity * Time.deltaTime);
 
-        Vector3 targetPosition = transform.position + movement;
+        
+    }
+    private void JecpacDawn()
+    {
+        animator.SetBool("IsMoving", false);
 
-        // ограничиваем перемещение объекта в пределах границ BoxCollider
-        if (movementBounds.bounds.Contains(targetPosition))
+
+        //Grav
+        velocity.y = 2f;
+
+        velocity.y -= gravity * Time.deltaTime;
+        characterController.Move(-velocity * Time.deltaTime);
+
+        
+    }
+
+    private void Fly()
+    {
+        float horizontal = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
+        float vertical = Input.GetAxisRaw("Vertical") * Time.deltaTime;
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+        if (direction.magnitude >= .1f)
         {
-            transform.position = targetPosition;
+            float targetAgle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cameraTransform.transform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAgle, ref turn, _turntime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            Vector3 moveDirecton = Quaternion.Euler(0f, targetAgle, 0f) * Vector3.forward;
+            characterController.Move(_speed * Time.deltaTime * moveDirecton.normalized);
+
+
         }
     }
-    public float speed = 5f;
-    public BoxCollider movementBounds;
 
 
+    private void OnAnimatorMove()
+    {
+        Vector3 velocity = animator.deltaPosition;
 
+        if (isUp == true&& isjec == false&& !isGraund)
+        {
+            velocity.y = ySpeed * Time.deltaTime; 
+        }
+        characterController.Move(velocity);
+    }
 
+   
 
 
     private void PlayerRun()
     {
-        isGraund = Physics.CheckSphere(_groundChek.position, groundDistanse, groundMask);
+        
+       
+       
 
-        if (isGraund && velocity.y < 0)
+        
+        float horizontalInput = Input.GetAxis("Horizontal")*Time.deltaTime;
+        float verticalInput = Input.GetAxis("Vertical")*Time.deltaTime;
+
+        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
+        
+        movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
+        movementDirection.Normalize();
+
+        ySpeed += Physics.gravity.y * Time.deltaTime;
+
+        if (characterController.isGrounded)
         {
-            velocity.y = -2f;
+            lastGroundedTime = Time.time;
         }
+        characterController.stepOffset = 0;
+        
 
-        float horizontal = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
-        float vertical = Input.GetAxisRaw("Vertical") * Time.deltaTime;
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-        velocity.y += gravity * Time.deltaTime;
-        _controller.Move(velocity * Time.deltaTime);
-        if (_groundChek.position.y < -1f)
+        if (movementDirection != Vector3.zero)
         {
-           // FindObjectOfType<GameOver>().EndGame();
-        }
+            animator.SetBool("IsMoving", true);
 
-        if (direction.magnitude >= .1f)
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
+        else
         {
-            float targetAgle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _camera.transform.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAgle, ref turn, _turntime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            Vector3 moveDirecton = Quaternion.Euler(0f, targetAgle, 0f) * Vector3.forward;
-            _controller.Move(_speed * Time.deltaTime * moveDirecton.normalized);
-
-
-           // animator.SetBool("go", true);
+            animator.SetBool("IsMoving", false);
         }
-       // else
-      //  {animator.SetBool(, false); }
+    }
+    void OnDrawGizmosSelected()
+    {
+       
+        //Gizmos.DrawWireSphere(_groundChek, groundDistanse);
 
     }
-
 
 
 }

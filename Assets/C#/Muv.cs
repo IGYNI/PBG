@@ -18,6 +18,8 @@ public class Muv : MonoBehaviour
     [SerializeField] private Transform _groundChek;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] float _speed = 7f;
+    public Bar Bar;
+   
     private float _turntime = 0.1f;
     private float turn;
     private float gravity = 1;
@@ -30,8 +32,8 @@ public class Muv : MonoBehaviour
     private float ySpeed;
     private float originalStepOffset;
     private float? lastGroundedTime;
-  
 
+    private float JecpacBar = 30f;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class Muv : MonoBehaviour
     private bool isjec;
     void Update()
     {
+      
         isGraund = Physics.CheckSphere(_groundChek.position, groundDistanse, groundMask);
         if (Input.GetKey(KeyCode.Space))
         {
@@ -56,15 +59,27 @@ public class Muv : MonoBehaviour
         }
         if (isGraund)
         {
+            if (JecpacBar < 30)
+            {
+                JecpacBar += Time.deltaTime;
+            }
+            Bar.SetHealt(JecpacBar);
             if (PlayerState.Instance.CurrentState == PlayerStates.PickedUpItem == false)
             {
                 isjec = false;
                 PlayerRun();
             }
         }
-        else
+        else if(JecpacBar>0)
         {
+            JecpacBar -= Time.deltaTime;
+            Bar.SetHealt(JecpacBar);
             Fly();
+            
+        }
+        if(JecpacBar <= 0)
+        {
+            JecpacDawn();
         }
     }
     

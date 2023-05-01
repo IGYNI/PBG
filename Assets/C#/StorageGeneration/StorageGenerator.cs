@@ -32,19 +32,14 @@ namespace StorageGeneration
 
         public void Generate(IReadOnlyCollection<BoxInfo> orderedBoxes)
         {
+            StopAllCoroutines();
             _boxPool.ReleaseAll();
             _allBoxes.Clear();
 
-            StartCoroutine(GenerationRoutine());
-
-            foreach (BoxInfo info in orderedBoxes)
-            {
-                IEnumerable<Box> defaultBoxes = _allBoxes.Where(box => box.IsDefault);
-                defaultBoxes.ElementAt(Random.Range(0, defaultBoxes.Count())).SetInfo(info);
-            }
+            StartCoroutine(GenerationRoutine(orderedBoxes));
         }
 
-        private IEnumerator GenerationRoutine()
+        private IEnumerator GenerationRoutine(IReadOnlyCollection<BoxInfo> orderedBoxes)
         {
             foreach (Transform point in _allPoints)
             {
@@ -53,6 +48,12 @@ namespace StorageGeneration
                 box.ResetByDefault();
                 _allBoxes.Add(box);
                 yield return null;
+            }
+
+            foreach (BoxInfo info in orderedBoxes)
+            {
+                IEnumerable<Box> defaultBoxes = _allBoxes.Where(box => box.IsDefault);
+                defaultBoxes.ElementAt(Random.Range(0, defaultBoxes.Count())).SetInfo(info);
             }
         }
 

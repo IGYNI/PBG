@@ -8,6 +8,7 @@ public class Box : MonoBehaviour
     [SerializeField] private Canvas[] CanvasSides;
     [SerializeField] private Text TextOfNameBox;
     private string NameOfBox;
+    private string CatOfBox;
     
     private MeshRenderer _meshRenderer;
     private Rigidbody _rigidbody;
@@ -49,6 +50,7 @@ public class Box : MonoBehaviour
                 }
             }
             CanvasSides[CanvasSide].transform.GetComponent<SideStickers>().StickersOfSide[NumbOfSticker].SetActive(true);
+            CatOfBox = info.CatOfBox;
             foreach (var cat in GetComponent<ListOfItemsNames>().Categorys)
             {
                 if(cat == info.CatOfBox)

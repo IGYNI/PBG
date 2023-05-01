@@ -65,28 +65,56 @@ public class PickUpItem : MonoBehaviour
                             if (GetComponent<Inventory>().InHands != null)
                             {
                                 UnityEngine.Debug.Log("6");
+                                try
+                                {
+                                    GetComponent<Inventory>().ListOfToolsInInventory.Remove(tool);
+                                }
+                                catch (System.Exception)
+                                {
+                                    
+                                    throw;
+                                }
                                 GetComponent<Inventory>().ListOfToolsInInventory.Add(GetComponent<Inventory>().InHands);
-                                GetComponent<Inventory>().InHands = tool;
-                                //GetComponent<Inventory>().UpdateSlots();
-                            }
-
-                            if (SampleOfWrench == tool)
-                            {
-                                UnityEngine.Debug.Log("7");
                                 GetComponent<Inventory>().InHands = tool;
                                 hitInfo.transform.position = PositionWithHand.position;
                                 hitInfo.transform.rotation = PositionWithHand.rotation;
                                 hitInfo.transform.SetParent(GetComponent<Transform>());
+                                //if(tool == SampleOfFlash)
+                                //{
+                                //    tool.Light.enabled = false;
+                                //}
+                                GetComponent<Inventory>().UpdateSlots();
                             }
-                            UnityEngine.Debug.Log(SampleOfFlash == tool);
-                            if(SampleOfFlash == tool)
+                            else
                             {
-                                UnityEngine.Debug.Log("8");
-                                GetComponent<Inventory>().InHandsAnother = tool;
-                                hitInfo.transform.position = PositionWithHandAnother.position;
-                                hitInfo.transform.rotation = PositionWithHandAnother.rotation;
+                                GetComponent<Inventory>().InHands = tool;
+                                hitInfo.transform.position = PositionWithHand.position;
+                                hitInfo.transform.rotation = PositionWithHand.rotation;
                                 hitInfo.transform.SetParent(GetComponent<Transform>());
+                                //if(tool == SampleOfFlash)
+                                //{
+                                //    tool.Light.enabled = false;
+                                //}
+                                GetComponent<Inventory>().UpdateSlots();
                             }
+
+                            //if (SampleOfWrench == tool)
+                            //{
+                            //    UnityEngine.Debug.Log("7");
+                            //    GetComponent<Inventory>().InHands = tool;
+                            //    hitInfo.transform.position = PositionWithHand.position;
+                            //    hitInfo.transform.rotation = PositionWithHand.rotation;
+                            //    hitInfo.transform.SetParent(GetComponent<Transform>());
+                            //}
+                            //UnityEngine.Debug.Log(SampleOfFlash == tool);
+                            //if(SampleOfFlash == tool)
+                            //{
+                            //    UnityEngine.Debug.Log("8");
+                            //    GetComponent<Inventory>().InHandsAnother = tool;
+                            //    hitInfo.transform.position = PositionWithHandAnother.position;
+                            //    hitInfo.transform.rotation = PositionWithHandAnother.rotation;
+                            //    hitInfo.transform.SetParent(GetComponent<Transform>());
+                            //}
 
 
                         }

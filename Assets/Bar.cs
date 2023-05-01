@@ -16,7 +16,7 @@ public class Bar : MonoBehaviour
     {
         slider.value = health;
 
-        Debug.Log(health);
+        
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 

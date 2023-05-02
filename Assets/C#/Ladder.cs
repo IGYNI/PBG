@@ -44,16 +44,12 @@ public class Ladder : MonoBehaviour
             
         }
         
-        if (isRange&&Input.GetKey(KeyCode.E)&&newParent.activeSelf==true&& Muv.isUp == true)
+        if (isRange&&Input.GetKey(KeyCode.E)&&newParent.activeSelf==true)
         {
             time -= Time.deltaTime;
             if(time < 0)
             {
-                Muv.isUp = false;
-               
-                upLadder=false;
-                Stesh.gameObject.transform.position = PointUp.transform.position;
-                Stesh.gameObject.transform.rotation = newParent.transform.rotation;
+                
             }
             else
             {
@@ -64,10 +60,7 @@ public class Ladder : MonoBehaviour
         {
             time = 1f;
         }
-        if (Muv.isUp == false && isRange&& Input.GetKeyDown(KeyCode.E))
-        {
-            Muv.isUp = true;
-        }
+        
     }
     private void OnTriggerEnter(Collider other)
     {

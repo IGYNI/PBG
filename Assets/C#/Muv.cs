@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Muv : MonoBehaviour
 {
-    public bool isUp;
+    
     public float xRotation = 60f;
     public float verticalInput;
   
@@ -37,12 +37,13 @@ public class Muv : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isUp = true;
+        
         characterController = GetComponent<CharacterController>();
         originalStepOffset = characterController.stepOffset;
     }
 
     private bool isjec;
+    private bool isFly;
     void Update()
     {
       
@@ -50,7 +51,13 @@ public class Muv : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             isjec = true;
+            isFly = true;
             Jecpac();
+            
+        }
+        else
+        {
+            isFly = false;
         }
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -66,8 +73,16 @@ public class Muv : MonoBehaviour
             Bar.SetHealt(JecpacBar);
             if (PlayerState.Instance.CurrentState == PlayerStates.PickedUpItem == false)
             {
+
+
                 isjec = false;
+
+                if(isFly==false)
+                {
+                JecpacDawn();
+                }
                 PlayerRun();
+                
             }
         }
         else if(JecpacBar>0)
@@ -86,8 +101,8 @@ public class Muv : MonoBehaviour
     private void Jecpac()
     {
         animator.SetBool("IsMoving", false);
+
         
-       
            //Grav
              velocity.y = -2f;
 
@@ -100,7 +115,7 @@ public class Muv : MonoBehaviour
     {
         animator.SetBool("IsMoving", false);
 
-
+        
         //Grav
         velocity.y = 2f;
 
@@ -112,6 +127,8 @@ public class Muv : MonoBehaviour
 
     private void Fly()
     {
+        animator.SetBool("Fly", true);
+        animator.SetBool("IsMoving", false);
         float horizontal = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
         float vertical = Input.GetAxisRaw("Vertical") * Time.deltaTime;
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
@@ -126,59 +143,39 @@ public class Muv : MonoBehaviour
 
 
         }
-    }
+    } 
 
-
-    private void OnAnimatorMove()
-    {
-        Vector3 velocity = animator.deltaPosition;
-
-        if (isUp == true&& isjec == false&& !isGraund)
-        {
-            velocity.y = ySpeed * Time.deltaTime; 
-        }
-        characterController.Move(velocity);
-    }
-
-   
-
+        
 
     private void PlayerRun()
     {
+
+
+        animator.SetBool("Fly", false);
         
-       
-       
 
-        
-        float horizontalInput = Input.GetAxis("Horizontal")*Time.deltaTime;
-        float verticalInput = Input.GetAxis("Vertical")*Time.deltaTime;
+        float horizontal = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
+        float vertical = Input.GetAxisRaw("Vertical") * Time.deltaTime;
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+                      
 
-        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
-        
-        movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
-        movementDirection.Normalize();
-
-        ySpeed += Physics.gravity.y * Time.deltaTime;
-
-        if (characterController.isGrounded)
+        if (direction.magnitude >= .1f)
         {
-            lastGroundedTime = Time.time;
-        }
-        characterController.stepOffset = 0;
-        
-
-        if (movementDirection != Vector3.zero)
-        {
+            float targetAgle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cameraTransform.transform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAgle, ref turn, _turntime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            Vector3 moveDirecton = Quaternion.Euler(0f, targetAgle, 0f) * Vector3.forward;
+            characterController.Move(_speed * Time.deltaTime * moveDirecton.normalized);
             animator.SetBool("IsMoving", true);
 
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            
         }
-        else
+        if (horizontal != 0f || vertical != 0f)
         {
-            animator.SetBool("IsMoving", false);
+            animator.SetBool("IsMoving", true);
         }
+
+
     }
     void OnDrawGizmosSelected()
     {

@@ -1,11 +1,12 @@
 ﻿using General;
 using NaughtyAttributes;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ordering
 {
-    public class Terminal : SceneSingletone<Terminal>
+    public class Terminal : SceneSingletone<Terminal>, IBrokable
     {
         [SerializeField] private Database _database;
         [SerializeField] private Vector3 _triggerOffset, _triggerSize;
@@ -17,12 +18,12 @@ namespace Ordering
 
         public bool IsBroken { get; private set; }
 
-        [field: SerializeField, Range(1, 10)] public int OrderBoxesCount { get; set; } = 3;
+        [field: SerializeField, Range(1, 10)] public int OrderBoxesCount { get; set; } = 1;
         public Order CurrentOrder { get; private set; }
 
         public void CreateOrder()
         {
-            CurrentOrder = new(_database, OrderBoxesCount);
+            CurrentOrder = new(_database, OrderBoxesCount, 3);
             GameEvents.Instance.Dispatch(GameEventType.OrderCreated);
         }
 
@@ -33,7 +34,10 @@ namespace Ordering
                 return;
 
             if (CurrentOrder != null)
-                Complete(CurrentOrder.Boxes);
+            {
+                List<BoxInfo> boxes = new(CurrentOrder.Boxes);
+                Complete(boxes);
+            }
         }
 
         public void Complete(IReadOnlyCollection<BoxInfo> boxes)

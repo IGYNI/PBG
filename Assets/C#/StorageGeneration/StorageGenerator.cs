@@ -1,7 +1,7 @@
 ﻿using General;
 using Ordering;
+using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using UnityEngine;
 
@@ -15,9 +15,10 @@ namespace StorageGeneration
         private List<Box> _allBoxes = new();
         private Pool<Box> _boxPool;
 
+
         protected override void Init()
         {
-            _boxPool = new(CreateBox, transform, 500);
+            _boxPool = new(CreateBox, transform, 10);
             _stacks = FindObjectsByType<Stack>(FindObjectsSortMode.InstanceID);
             _stacks.ToList().ForEach(stack => _allPoints.AddRange(stack.BoxPoints));
         }
@@ -31,14 +32,28 @@ namespace StorageGeneration
 
         public void Generate(IReadOnlyCollection<BoxInfo> orderedBoxes)
         {
+            StopAllCoroutines();
             _boxPool.ReleaseAll();
-            _allPoints.ForEach(point => _allBoxes.Add(_boxPool.Get(point.transform.position)));
-            _allBoxes.ForEach(box => box.ResetByDefault());
+            _allBoxes.Clear();
 
-            foreach (BoxInfo boxInfo in orderedBoxes)
+            StartCoroutine(GenerationRoutine(orderedBoxes));
+        }
+
+        private IEnumerator GenerationRoutine(IReadOnlyCollection<BoxInfo> orderedBoxes)
+        {
+            foreach (Transform point in _allPoints)
+            {
+                Box box = _boxPool.Get(point.transform.position);
+                box.transform.rotation = Random.rotation;
+                box.ResetByDefault();
+                _allBoxes.Add(box);
+                yield return null;
+            }
+
+            foreach (BoxInfo info in orderedBoxes)
             {
                 IEnumerable<Box> defaultBoxes = _allBoxes.Where(box => box.IsDefault);
-                defaultBoxes.ElementAt(Random.Range(0, defaultBoxes.Count())).SetInfo(boxInfo);
+                defaultBoxes.ElementAt(Random.Range(0, defaultBoxes.Count())).SetInfo(info);
             }
         }
 

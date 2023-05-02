@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Ordering
 {
@@ -11,13 +13,14 @@ namespace Ordering
         public IReadOnlyCollection<BoxInfo> Boxes => _boxes;
         public bool IsCompleted => _boxes.Count == 0;
 
-        public Order(Database database, int boxesCount)
+        public Order(Database database, int boxesCount, int carsCount)
         {
-            int carsCount = 4;
-
             for (int i = 0; i < boxesCount; i++)
             {
-                _boxes.Add(new BoxInfo(database.GetRandomColor(), /*database.GetRandomSticker(),*/ UnityEngine.Random.Range(1, carsCount)));
+                Color color = database.GetRandomColor();
+                Document document = database.GetRandomDocument();
+                int carIndex = Random.Range(1, carsCount + 1);
+                _boxes.Add(new BoxInfo(color, document, carIndex));
             }
         }
 
@@ -30,5 +33,7 @@ namespace Ordering
                 _boxes.Remove(box);
             }
         }
+
+        public void Complete() => _boxes.Clear();
     }
 }

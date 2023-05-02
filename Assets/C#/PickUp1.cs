@@ -15,6 +15,7 @@ public class PickUp1 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             PickUpItems();
+            //GetComponent<Inventory>().TakeOutAll();
         }
     }
     private void PickUpItems()

@@ -5,13 +5,13 @@ using UnityEngine;
 public class BoxInfo
 {
     public Color Color { get; set; }
+    public Document Document { get; set; }
     public int CarIndex { get; set; }
-    //public Sprite Sticker { get; set; }
 
-    public BoxInfo(Color color, /*Sprite sprite,*/ int carIndex)
+    public BoxInfo(Color color, Document document, int carIndex)
     {
         Color = color;
-        //Sticker = sprite;
+        Document = document;
         CarIndex = carIndex;
     }
 }

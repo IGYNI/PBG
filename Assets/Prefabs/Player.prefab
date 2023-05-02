@@ -617,10 +617,12 @@ MonoBehaviour:
   PositionWithCamera: {fileID: 0}
   PositionWithPlayer: {fileID: 0}
   PositionWithHand: {fileID: 1551998601039719259}
+  PositionWithHandAnother: {fileID: 0}
   GameObject: {fileID: 0}
   TakeBoxBtn: {fileID: 0}
   RangeOfGetting: 5
   SampleOfWrench: {fileID: 8905229785472974423, guid: cdf92e8d28067c84bab14b738af27946, type: 3}
+  SampleOfFlash: {fileID: 0}
 --- !u!114 &1551998601695853024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,7 +641,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   ListOfBeltPos: []
+  Player: {fileID: 0}
   InHands: {fileID: 0}
+  InHandsAnother: {fileID: 0}
 --- !u!114 &1551998601695853025
 MonoBehaviour:
   m_ObjectHideFlags: 0

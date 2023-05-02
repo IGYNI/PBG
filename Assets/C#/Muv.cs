@@ -71,8 +71,7 @@ public class Muv : MonoBehaviour
                 JecpacBar += Time.deltaTime;
             }
             Bar.SetHealt(JecpacBar);
-            if (PlayerState.Instance.CurrentState == PlayerStates.PickedUpItem == false)
-            {
+            
 
 
                 isjec = false;
@@ -83,7 +82,7 @@ public class Muv : MonoBehaviour
                 }
                 PlayerRun();
                 
-            }
+            
         }
         else if(JecpacBar>0)
         {
